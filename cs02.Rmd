@@ -57,6 +57,8 @@ The case study grade will be based on both reports.
 
 - [Linear regression](decks/cs02_1_deck.html)
 
+- [add a deck on interaction here]
+
 - [Logistic regression](decks/cs02_2_deck.html) 
 
 - [Power analysis](decks/cs02_3_deck.html)

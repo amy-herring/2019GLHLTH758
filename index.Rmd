@@ -24,12 +24,10 @@ markup: "mmark"
 <font color="#6CA0DC"><i class="fas fa-calendar-alt fa-lg"></i></font> &nbsp; WF 8:30-9:45am
 
 
-### Teaching Team and Office Hours 
+### Office Hours 
 
-| Team member | Office hours | Location |
-| ----------  | ----         | ---- |
-| [Professor Amy Herring](https://stat.duke.edu/people/amy-h-herring)  <a href="mailto:amy.herring@duke.edu" title="email"><i class="fa fa-envelope"></i></a> &nbsp;  | Wednesday and Thursday 1:30-2:30pm | 208 Old Chemistry |
-[TA Kelly Moran](https://www.krellinst.org/csgf/fellows/profile?n=moran2016)  <a href="mailto:kelly.moran@duke.edu" title="email"><i class="fa fa-envelope"></i></a> &nbsp; | Monday 11:45am-12:45pm and Wednesday 7:15-8:15am | Lounge by Trent 040
+| [Professor Amy Herring](https://stat.duke.edu/people/amy-h-herring)  <a href="mailto:amy.herring@duke.edu" title="email"><i class="fa fa-envelope"></i></a> &nbsp;  | Wednesday and Thursday 1:30-2:30pm (or by appt) | 208 Old Chemistry |
+
 
 ### Materials
 
@@ -37,39 +35,38 @@ You should have access to a laptop and bring it to every class, fully charged. T
 
 
 ### Topics and Important Dates
-GLHLTH 758 contains a mixture of lecture, lab, and combination sessions at the usual class times. Sessions marked "lab" will be taught by Kelly and involve hands-on analysis and/or consultation about case studies.
+GLHLTH 758 contains a mixture of lecturs and hands-on data analysis by groups.
 
-Note: this schedule is approximate and is likely to be modified as the course progresses. Readiness assessments will be given without advance notice. Assignments are due at the beginning of class unless otherwise specified.
+Note: this schedule is approximate and is likely to be modified as the course progresses. Assignments are due at the beginning of class unless otherwise specified.
 
 |Date           |Topic                      |Deliverables     |
 | ----------    | -----------------         | --------------- |
-| August 29     | Welcome, Groups, and CS1: Healthy Babies      |       |
-| August 31     | CS1: R and Data Visualization    |                 |
-| September 5   | CS1: Hands on with R  | 1-page Proposals for Individual Case Studies & Group Expectations Documents Signed |
-| September 7   | CS1: Data Wrangling and Visualization | |
-| September 12  | CS1: Tableau for Data Visualization | |
-| September 14  | CS1: Lab: Tableau | CS1 Topic and Plan |
-| September 19  | CS2: Modeling | |
-| Septmeber 21  | CS2: Hands On: Modeling Birth Weight | |
-| September 26  | Group Presentations of CS1 | CS1 Final Report|
-| Septmeber 28  | CS2: Generalized Linear Models | |
-| October 3     | CS2: Logistic Regression | CS2 Interim Report  | 
-| October 5     | CS2: Statistical Power |  |
-| October 10    | CS2: Interpreting results of models | |
-| October 12    | CS2: Lab: Interpreting results of models |  |
-| October 17    | CS3: Small sample methods |  CS2 Interim Report |
-| October 19    | CS3: Hierarchical Models | Individual Case Study Interim Report |
-| October 24    | CS3: Hands on with Hierarchical Models & Interim Report Feedback | CS 2 Final Report  |
-| October 26    | CS3  Hands on with Hierarchical Models  |   | 
-| October 31    | CS4: Cross-Sectional vs. Longitudinal Data |   |
-| November 2    | CS3 Visualization presentations and CS4: Longitudinal Data | CS3 Interim Report (Class Presentation) |
-| November 7    | CS4: Missing Data Basics |  |
-| November 9    | Individual Case Studies | Individual Case Study Presentations |
-| November 14   | Individual Case Studies |Individual Case Study Presentations   |
-| November 16   | Individual Case Studies | Individual Case Study Presentations |
-| November 19 | CS3 Final Report | |
-| November 28   | CS4: Lab: CS4 Reports | Individual Case Study Final Report  | 
-| November 30   | CS4: Lab: CS4 Reports | CS4 Final Report (by 5pm)|
-| TBA (Dec 7? Another day?) | Optional End of Term Celebration | | 
+| August 28     | Welcome, Groups, and CS1: Healthy Babies      |       |
+| August 30     | CS1: R and Data Visualization    |                 |
+| September 4   | CS1: Hands on with R  | 1-page Proposals for Individual Case Studies & Group Expectations Documents Signed |
+| September 6   | CS1: Data Wrangling and Visualization | |
+| September 11  | CS1: Tableau for Data Visualization | |
+| September 13  | CS1: Lab: Tableau | CS1 Topic and Plan |
+| September 18  | CS2: Regression Modeling | |
+| Septmeber 20  | CS2: Interaction in Regression | |
+| September 25  | Group Presentations of CS1 | CS1 Final Report|
+| Septmeber 27  | CS2: Hands On: Modeling Birth Weight | |
+| October 2     | Individual Project Proposal Presentations |   | 
+| October 4     | Individual Project Proposal Presentations | CS2 Interim Report |
+| October 9    | CS2: Logistic Regression | |
+| October 11    | CS2: Statistical Power |  |
+| October 16    | CS2: Interaction in Logistic Regression |  CS2 Interim Report |
+| October 18    | CS2: Hands-on Logistic Regression | |
+| October 23    | CS2: Small sample methods |   |
+| October 25    | CS2 Presentations  | CS2 Final Report  | 
+| October 30    | CS3: Longitudinal Data |   |
+| November 1    | CS3: Longitudinal Data | |
+| November 6    | CS3: Hands-on Longitudinal Data |  |
+| November 8    | CS3 Presentations | Case Study 3 |
+| November 13   | Individual Case Study Presentations |   |
+| November 15   | Individual Case Study Presentations |  |
+| November 20 | Individual Case Study Presentations | |
+| November 22 | Individual Case Study Presentations | Individual Case Studies |
+
 
 
