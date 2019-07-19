@@ -1,5 +1,5 @@
 ---
-title: "Case Study 4: Longitudinal Data"
+title: "Case Study 3: Longitudinal Data"
 ---
 
 ```{r, echo=FALSE, include=FALSE}

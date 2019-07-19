@@ -24,10 +24,11 @@ markup: "mmark"
 <font color="#6CA0DC"><i class="fas fa-calendar-alt fa-lg"></i></font> &nbsp; WF 8:30-9:45am
 
 
-### Office Hours 
+### Professor
 
-| [Professor Amy Herring](https://stat.duke.edu/people/amy-h-herring)  <a href="mailto:amy.herring@duke.edu" title="email"><i class="fa fa-envelope"></i></a> &nbsp;  | Wednesday and Thursday 1:30-2:30pm (or by appt) | 208 Old Chemistry |
+| [Professor Amy Herring](https://stat.duke.edu/people/amy-h-herring)  <a href="mailto:amy.herring@duke.edu" title="email"><i class="fa fa-envelope"></i></a> &nbsp; 
 
+Office hours Wednesday and Thursday 1:45-2:45 (or by appointment), 208 Old Chemistry Building
 
 ### Materials
 
@@ -35,14 +36,14 @@ You should have access to a laptop and bring it to every class, fully charged. T
 
 
 ### Topics and Important Dates
-GLHLTH 758 contains a mixture of lecturs and hands-on data analysis by groups.
+GLHLTH 758 contains a mixture of lectures and hands-on data analysis by groups.
 
 Note: this schedule is approximate and is likely to be modified as the course progresses. Assignments are due at the beginning of class unless otherwise specified.
 
 |Date           |Topic                      |Deliverables     |
 | ----------    | -----------------         | --------------- |
 | August 28     | Welcome, Groups, and CS1: Healthy Babies      |       |
-| August 30     | CS1: R and Data Visualization    |                 |
+| August 30     | CS1: R and Data Visualization    |     RStudio Installed and Video Tutorial under R Basics Tab Completed            |
 | September 4   | CS1: Hands on with R  | 1-page Proposals for Individual Case Studies & Group Expectations Documents Signed |
 | September 6   | CS1: Data Wrangling and Visualization | |
 | September 11  | CS1: Tableau for Data Visualization | |
@@ -55,14 +56,14 @@ Note: this schedule is approximate and is likely to be modified as the course pr
 | October 4     | Individual Project Proposal Presentations | CS2 Interim Report |
 | October 9    | CS2: Logistic Regression | |
 | October 11    | CS2: Statistical Power |  |
-| October 16    | CS2: Interaction in Logistic Regression |  CS2 Interim Report |
+| October 16    | CS2: Interaction in Logistic Regression |   |
 | October 18    | CS2: Hands-on Logistic Regression | |
 | October 23    | CS2: Small sample methods |   |
-| October 25    | CS2 Presentations  | CS2 Final Report  | 
+| October 25    | CS2 Presentations  |  CS2 Final Report | 
 | October 30    | CS3: Longitudinal Data |   |
 | November 1    | CS3: Longitudinal Data | |
 | November 6    | CS3: Hands-on Longitudinal Data |  |
-| November 8    | CS3 Presentations | Case Study 3 |
+| November 8    | CS3 Presentations | CS3 Final Report |
 | November 13   | Individual Case Study Presentations |   |
 | November 15   | Individual Case Study Presentations |  |
 | November 20 | Individual Case Study Presentations | |
