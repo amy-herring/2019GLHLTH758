@@ -72,7 +72,7 @@ This case study draws on materials developed in Chapter 11 of Data Science in R:
 
 [Data visualization in R](decks/cs01_2_deck.html) 
 
-[R code for September 5](decks/sept5tutorial.html)
+[R code for Class Activity](decks/birthdataR.html)
 
 [Mapping in R](decks/cs01_3_deck.html)
 

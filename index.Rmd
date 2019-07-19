@@ -52,7 +52,7 @@ Note: this schedule is approximate and is likely to be modified as the course pr
 | Septmeber 20  | CS2: Interaction in Regression | |
 | September 25  | Group Presentations of CS1 | CS1 Final Report|
 | Septmeber 27  | CS2: Hands On: Modeling Birth Weight | |
-| October 2     | Individual Project Proposal Presentations |   | 
+| October 2     | Individual Project Proposal Presentations | Individual Project Statistical Analysis Plan  | 
 | October 4     | Individual Project Proposal Presentations | CS2 Interim Report |
 | October 9    | CS2: Logistic Regression | |
 | October 11    | CS2: Statistical Power |  |
