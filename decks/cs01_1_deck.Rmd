@@ -35,7 +35,7 @@ Much of the variability in birth weight is explained by gestational age at deliv
 
 ## Case Study Data
 
-You will visualize data on birth weight and gestational age at delivery for babies born in North Carolina from 2011-2016. The source of these data is the North Carolina State Center for Health Statistics. Relevant variables include the following.
+You will visualize data on birth weight and gestational age at delivery for babies born in North Carolina from 2011-2017. The source of these data is the North Carolina State Center for Health Statistics. Relevant variables include the following.
 
 - Birth weight in g (primary outcome variable)
 - Gestational age in weeks (babies should gain weight until delivery)
@@ -55,6 +55,10 @@ You will visualize data on birth weight and gestational age at delivery for babi
 - Hispanic origin of mother
 - Year of birth (useful to determine if there are any time trends)
 - County of residence (very rough proxy for socio-economic status)
+
+## Data Cleaning
+
+Vital records data can be messy, as research-quality data cleaning schemes are typically not used.  Sophisticated schemes have been developed to eliminate infeasible values for birth weight (generally babies born $<500$g do not survive), gestational age (virtually no babies born before 21 weeks survive), and their combination (e.g., a 41 week 600g baby is exceedingly unlikely). 
 
 ## Data Source: CIA Factbook
 

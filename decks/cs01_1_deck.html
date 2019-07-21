@@ -479,7 +479,7 @@ document.getElementsByTagName('head')[0].appendChild(style);
 </section>
 <section id="case-study-data" class="slide level2">
 <h2>Case Study Data</h2>
-<p>You will visualize data on birth weight and gestational age at delivery for babies born in North Carolina from 2011-2016. The source of these data is the North Carolina State Center for Health Statistics. Relevant variables include the following.</p>
+<p>You will visualize data on birth weight and gestational age at delivery for babies born in North Carolina from 2011-2017. The source of these data is the North Carolina State Center for Health Statistics. Relevant variables include the following.</p>
 <ul>
 <li>Birth weight in g (primary outcome variable)</li>
 <li>Gestational age in weeks (babies should gain weight until delivery)</li>
@@ -503,6 +503,10 @@ document.getElementsByTagName('head')[0].appendChild(style);
 <li>Year of birth (useful to determine if there are any time trends)</li>
 <li>County of residence (very rough proxy for socio-economic status)</li>
 </ul>
+</section>
+<section id="data-cleaning" class="slide level2">
+<h2>Data Cleaning</h2>
+<p>Vital records data can be messy, as research-quality data cleaning schemes are typically not used. Sophisticated schemes have been developed to eliminate infeasible values for birth weight (generally babies born <span class="math inline">\(&lt;500\)</span>g do not survive), gestational age (virtually no babies born before 21 weeks survive), and their combination (e.g., a 41 week 600g baby is exceedingly unlikely).</p>
 </section>
 <section id="data-source-cia-factbook" class="slide level2">
 <h2>Data Source: CIA Factbook</h2>

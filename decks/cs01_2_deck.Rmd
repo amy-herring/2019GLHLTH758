@@ -44,9 +44,9 @@ We will use the NC birth data, and measure whether there is a relationship betwe
 * For now, remove the rows with missing values
 * Note these data have not been carefully cleaned but represent values on file in NC birth registry
 
-```{r readdata}
+```{r readdata,cache=TRUE}
 #Read in birth data
-o_data <- read.csv("~/Documents/TEACHING/vitalstats/Yr1116Birth.csv", 
+o_data <- read.csv("~/Documents/TEACHING/vitalstats/Yr1117Birth.csv", 
   na.strings=c("99", "9999"))
 
 birth_data <- na.omit(o_data)
@@ -76,7 +76,7 @@ glimpse(birth_data)
 - How are the variables coded?
 
 ## Coding Woes
-```{r table}
+```{r table,cache=TRUE}
 table(birth_data$SEX)
 table(birth_data$MRACER)
 ```
@@ -86,7 +86,7 @@ Ok, I can make a very good guess at the coding for the sex variable based on kno
 
 Value labels are useful to help us remember whether 1=boys and 2=girls or the opposite. Value labels are not necessary for continuous or count variables but can be quite helpful for keeping track of categorical data. Let's add labels to sex, maternal race, and maternal Hispanic ethnicity (county is another good candidate, but NC has 100 counties, so I'll save the typing for you!), using the vital records data dictionary as a key.
 
-```{r valuelabels, warning=FALSE}
+```{r valuelabels, warning=FALSE, cache=TRUE}
 birth_data$SEX=factor(birth_data$SEX, levels=c(1,2,9),
                       labels=c("Male","Female","Unspecified"))
 birth_data$MRACER=factor(birth_data$MRACER, levels=0:8, 
@@ -103,7 +103,7 @@ birth_data$MHISP=factor(birth_data$MHISP, levels=c("C","M","N","O","P","S","U"),
 ## Value labels
 
 
-```{r table2}
+```{r table2,cache=TRUE}
 table(birth_data$SEX)
 table(birth_data$MRACER)
 ```
@@ -140,7 +140,7 @@ ggplot(data = [dataset], mapping = aes(x = [x-variable], y = [y-variable])) +
 ## Exploring Birth Weight Distribution 
 
   
-```{r histogram, out.width = '70%' }
+```{r histogram, out.width = '70%',cache=TRUE }
 ggplot(data = birth_data, mapping = aes(x = BWTG)) +
   geom_histogram(binwidth = 200) + xlab("Birth weight (g)") 
 ```
@@ -155,10 +155,10 @@ Make a prediction: What relationship do you expect to see between gestational ag
 
 ## <small> Weight as a function of gestational age </small>
 
-```{r scatterplot, out.width='50%'}
+```{r scatterplot, out.width='50%',cache=TRUE}
 ggplot(data = birth_data, mapping = aes(x = GEST, y = BWTG)) +
   geom_point() + xlab("Gestational age (weeks)") + ylab("Birth weight (g)") + 
-  ggtitle("NC Births, 2011-2016")
+  ggtitle("NC Births, 2011-2017")
 ```
 
 - Time for data cleaning!  (Unless an Asian elephant snuck in....)
@@ -168,7 +168,7 @@ ggplot(data = birth_data, mapping = aes(x = GEST, y = BWTG)) +
 
 Because it will complicate all our plotting, we're going to set the gestational age of the baby that is presumably *NOT* an elephant given its weight (elephants have the longest gestation of all mammals) to NA. Because this is a file of live births, we're going to do the same to gestational periods less than 20 weeks and birth weights below 500 g. Ideally, we would use a criterion to flag unreasonable combinations of birth weight and gestational age as well (but we will save that for you, if you'd like!).
 
-```{r clean}
+```{r clean,cache=TRUE}
 birth_data$GEST_C=birth_data$GEST; birth_data$BWTG_C=birth_data$BWTG
 birth_data$GEST_C[birth_data$GEST_C>50]=NA
 birth_data$GEST_C[birth_data$GEST_C<20]=NA
@@ -178,13 +178,13 @@ birth_data$BWTG_C[birth_data$BWTG_C<500]=NA
 
 ## <small> Birth weight by Gestational Age (Cleaned) </small>
 
-```{r scatterplotclean, out.width='50%'}
+```{r scatterplotclean, out.width='50%',cache=TRUE}
 ggplot(data = birth_data, mapping = aes(x = GEST_C, y = BWTG_C)) +
   geom_point() + xlab("Gestational age (weeks)") + ylab("Birth weight (g)") + 
   ggtitle("NC Births, 2011-2016")
 ```
 
-Much better, though I still don't believe them all!
+<small> Much better, though I still don't believe them all (some 20 week babies with full-term weights!) </small>
 
 ## Extending the Plots
 
@@ -207,10 +207,10 @@ Visual characteristics of plotting characters that can be **mapped to data** are
 - `alpha` (transparency)
 
 ## Weight by age by gender
-```{r wtagegender, out.width='50%', warning=FALSE}
+```{r wtagegender, out.width='50%', warning=FALSE,cache=TRUE}
 ggplot(data = birth_data, mapping = aes(x = GEST_C, y = BWTG_C, color=SEX)) +
   geom_point() + xlab("Gestational age (weeks)") + ylab("Birth weight (g)") + 
-  ggtitle("NC Births, 2011-2016")
+  ggtitle("NC Births, 2011-2017")
 ```
 
 That's a bit hard to see with all the data points! 
@@ -222,25 +222,25 @@ That's a bit hard to see with all the data points!
 - Useful for exploring conditional relationships and large data
 
 ## Weight by age by gender
-```{r wtagegendersplit, out.width='50%', warning=FALSE}
+```{r wtagegendersplit, out.width='50%', warning=FALSE,cache=TRUE}
 ggplot(data = birth_data, mapping = aes(x = GEST_C, y = BWTG_C)) +
   facet_grid(. ~ SEX) +
   geom_point() + xlab("Gestational age (weeks)") + ylab("Birth weight (g)") + 
-  ggtitle("NC Births, 2011-2016")
+  ggtitle("NC Births, 2011-2017")
 ```
 
 
 ## Adding a Scatterplot Smoother
-```{r scatterplotsmooth, out.width='50%', warning=FALSE}
+```{r scatterplotsmooth, out.width='50%', warning=FALSE,cache=TRUE}
 ggplot(data = birth_data, mapping = aes(x = GEST_C, y = BWTG_C)) +
   geom_smooth() + geom_point() + xlab("Gestational age (weeks)") + ylab("Birth weight (g)") + 
-  ggtitle("NC Births, 2011-2016")
+  ggtitle("NC Births, 2011-2017")
 ```
 
 ## Boxplots
 Box plots are a good way to compare distributions across groups.
 
-```{r box, out.width='50%'}
+```{r box, out.width='50%',cache=TRUE}
 ggplot(data = birth_data, mapping = aes(y = BWTG_C, x = SEX)) +
   geom_boxplot() + ylab("Birth weight (g)")
 ```
@@ -249,7 +249,7 @@ ggplot(data = birth_data, mapping = aes(y = BWTG_C, x = SEX)) +
 ## Bar plots
 Bar plots are a nice way to compare relative group sizes.
 
-```{r bar, out.width='60%'}
+```{r bar, out.width='60%',cache=TRUE}
 ggplot(data = birth_data, mapping = aes(x = MRACER)) +
   geom_bar() + xlab("Maternal race")
 ```
@@ -257,7 +257,7 @@ ggplot(data = birth_data, mapping = aes(x = MRACER)) +
 
 ## Flip plot
 
-```{r barnew, out.width='70%'}
+```{r barnew, out.width='70%',cache=TRUE}
 ggplot(data = birth_data, mapping = aes(x = MRACER)) +
   geom_bar() + coord_flip() + xlab("Maternal race")
 ```
@@ -267,7 +267,7 @@ ggplot(data = birth_data, mapping = aes(x = MRACER)) +
 ## Segmented bar plots, counts
 
 
-```{r bar2, out.width='70%'}
+```{r bar2, out.width='70%',cache=TRUE}
 ggplot(data = birth_data, mapping = aes(x = MRACER, fill = MHISP)) +
   geom_bar() + xlab("Maternal race")
 ```
@@ -275,16 +275,16 @@ ggplot(data = birth_data, mapping = aes(x = MRACER, fill = MHISP)) +
 
 ## In-class activities
 
-- Subset data to 2016 births in Durham county
+- Subset data to 2017 births in Durham county
 
-```{r durham, eval=FALSE}
-birth2016=subset(birth_data,birth_data$YOB=='2016')
+```{r durham, eval=FALSE,cache=TRUE}
+birth2017=subset(birth_data,birth_data$YOB=='2017')
 #CORES code for Durham Co is 32
-durhamb16=subset(birth2016,birth2016$CORES=='32')
+durhamb16=subset(birth2017,birth2016$CORES=='32')
 ```
 
 - Create a scatterplot of the Durham data with birth weight on the y-axis and gestational age on the x-axis. Adapt the plot by exploring [options in the geom_point() call](https://ggplot2.tidyverse.org/reference/geom_point.html).  For example, you can try the following.
-```{r ggpoint, eval=FALSE}
+```{r ggpoint, eval=FALSE,cache=TRUE}
 +geom_point(color='blue') #try other colors!
 +geom_point(alpha=1/2) # try fractions down to 1/10 -- helpful?
 + geom_point(shape=3) #try options!
