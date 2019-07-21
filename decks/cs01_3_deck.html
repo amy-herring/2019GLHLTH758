@@ -662,7 +662,7 @@ world =<span class="st"> </span><span class="kw">map</span>(<span class="dt">dat
 <h2>Correcting Radius Size</h2>
 <p>The small countries have symbols that are so tiny that we can barely see them, if at all, and we certainly can’t see their colors (check out the Caribbean). We will fix this by having a minimum radius, so any country with a population below a certain value is still visible.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Set minimum radius size</span>
-rads =<span class="st"> </span><span class="kw">pmax</span>(<span class="kw">sqrt</span>(allCtryData<span class="op">$</span>pop)<span class="op">/</span><span class="dv">4000</span>, <span class="dv">1</span>)
+allCtryData<span class="op">$</span>rads =<span class="st"> </span><span class="kw">pmax</span>(<span class="kw">sqrt</span>(allCtryData<span class="op">$</span>pop)<span class="op">/</span><span class="dv">4000</span>, <span class="dv">1</span>)
 
 <span class="co"># Fix Discs</span>
 world =<span class="st"> </span><span class="kw">map</span>(<span class="dt">database =</span> <span class="st">&quot;world&quot;</span>, <span class="dt">fill =</span> <span class="ot">TRUE</span>, <span class="dt">col=</span><span class="st">&quot;light grey&quot;</span>)
