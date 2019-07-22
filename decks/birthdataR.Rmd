@@ -34,12 +34,12 @@ birth_data$GEST_C[birth_data$GEST_C<20]=NA
 birth_data$BWTG_C[birth_data$BWTG_C<500]=NA
 
 # subset to durham and 2017
-birth2016=subset(birth_data,birth_data$YOB=='2017')
+birth2017=subset(birth_data,birth_data$YOB=='2017')
 #CORES code for Durham Co is 32
-durhamb16=subset(birth2016,birth2016$CORES=='32')
+durhamb17=subset(birth2017,birth2017$CORES=='32')
 
 #make a plot
-ggplot(data = durhamb16, mapping = aes(x = GEST_C, y = BWTG_C)) +
+ggplot(data = durhamb17, mapping = aes(x = GEST_C, y = BWTG_C)) +
   geom_point(alpha=1/10,color="blue") + xlab("Gestational age (weeks)") + ylab("Birth weight (g)") + 
   ggtitle("Durham Co, NC Births, 2011-2017")
 

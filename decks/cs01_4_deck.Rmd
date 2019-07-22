@@ -9,7 +9,7 @@ In this document, we'll be recreating the visualization from the book using Tabl
 
 ### Downloading Tableau
 
-[Instructions for downloading Tableau](tableaudownload.html) are available online. Please do this before class (it can take a bit of time to activate the software).
+[Instructions for downloading Tableau](https://tableau.duke.edu/get-tableau) are available online. Please do this before class (it can take a bit of time to activate the software).
 
 ### Importing & Opening the Data 
 To begin, open Tableau desktop - you should see a screen similar to the below.
