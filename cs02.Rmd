@@ -34,6 +34,7 @@ We'll use the North Carolina birth and infant death data on Sakai for this assig
 
 # Resources 
 - [Linear Regression in R](http://r-statistics.co/Linear-Regression.html)
+- [Some (mostly good)thoughts on interaction in regression](https://ademos.people.uic.edu/Chapter13.html)
 - [Logistic Regression in R](https://stats.idre.ucla.edu/r/dae/logit-regression/)
 - [Power Analysis in R](https://www.statmethods.net/stats/power.html)
 - [R Code for Some Nonparametric Tests](https://www.statmethods.net/stats/nonparametric.html)
@@ -44,11 +45,15 @@ We'll use the North Carolina birth and infant death data on Sakai for this assig
 
 # Reports 
 
-- In an interim report due October 3, create a model to describe how factors available in the NC births file are related to birth weight of infants. Be sure to describe your model and modeling approach clearly and to present results in language suitable for publication in a scientific journal. Graphical displays are encouraged. The report is not to exceed 5 pages. Reproducible code should be uploaded along with the report.
+- In an interim report, create a model to describe how factors available in the NC births file are related to birth weight of infants. Be sure to describe your model and modeling approach clearly and to present results in language suitable for publication in a scientific journal. Graphical displays are encouraged. The report is not to exceed 5 pages. Reproducible code should be uploaded along with the report.
 
-- In a final report due October 12, examine the factors related to statewide infant mortality rates (not including county of residence as a predictor) and evaluate whether there is evidence that these rates are changing over time in any specific groups. This report is also not to exceed 5 pages. Reproducible code should be uploaded along with the report.
+- An interim reproducibility check will be carried out by another team (each team will be responsible for checking reproducibility of another team's results).
 
-The case study grade will be based on both reports.
+- In a final report, examine the factors related to statewide infant mortality rates (not including county of residence as a predictor) and evaluate whether there is evidence that these rates are changing over time in any specific groups. This report is also not to exceed 5 pages. Reproducible code should be uploaded along with the report.
+
+- Final reproducibility will also be checked by another (different) team, so each team will be responsible for checking reproducibility of another team.
+
+The case study grade will be based on both reports and the reproducibility checks.
 
 
 

@@ -56,9 +56,7 @@ h6 {
 
 <link rel="stylesheet" href="styles.css" type="text/css" />
 
-</head>
 
-<body>
 
 <style type = "text/css">
 .main-container {
@@ -83,6 +81,9 @@ img {
 button.code-folding-btn:focus {
   outline: none;
 }
+summary {
+  display: list-item;
+}
 </style>
 
 
@@ -97,7 +98,6 @@ body {
   padding-top: 50px;
   margin-top: -50px;
 }
-
 .section h2 {
   padding-top: 50px;
   margin-top: -50px;
@@ -117,6 +117,43 @@ body {
 .section h6 {
   padding-top: 50px;
   margin-top: -50px;
+}
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #ffffff;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
 }
 </style>
 
@@ -138,18 +175,75 @@ $(document).ready(function () {
 });
 </script>
 
-
-<div class="container-fluid main-container">
-
 <!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
 <script>
 $(document).ready(function () {
   window.buildTabsets("TOC");
 });
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
 </script>
 
 <!-- code folding -->
-
 
 
 
@@ -227,8 +321,6 @@ div.tocify {
 
 .tocify-subheader .tocify-item {
   font-size: 0.90em;
-  padding-left: 25px;
-  text-indent: 0;
 }
 
 .tocify .list-group-item {
@@ -243,6 +335,16 @@ div.tocify {
 }
 
 </style>
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
 
 <!-- setup 3col/9col grid for toc_float and main content  -->
 <div class="row-fluid">
@@ -284,10 +386,7 @@ div.tocify {
   <a href="cs02.html">Case Study 2</a>
 </li>
 <li>
-  <a href="cs03.html">Case Study 3</a>
-</li>
-<li>
-  <a href="cs04.html">Case Study 4</a>
+  <a href="cs04.html">Case Study 3</a>
 </li>
 <li>
   <a href="cs05.html">Individual Case Study</a>
@@ -313,19 +412,19 @@ div.tocify {
 <h3>Policies</h3>
 <p>Your group has a number of responsibilities for problem and project assignments, described below.</p>
 <ul>
-<li>Designate a coordinator, recorder, monitor, reproducibility checker, and reviewer for each assignment. These should vary so that each group member takes each role on an assignment. For 4-person teams, combine the roles of reviewer and monitor.</li>
+<li>Designate a coordinator, recorder, reproducibility checker, and monitor/reviewer for each assignment. These should vary so that each group member takes a different role on a new assignment. For 5-person teams, split the roles of reviewer and monitor.</li>
 <li>Agree on meeting times in advance and on what each member should have complete before the meetings (readings, initial analysis, coding, etc.).</li>
 <li>Do the required individual preparation.</li>
 <li>Coordinator sends reminder before meeting that includes meeting location, time, and individual preparation assignments</li>
-<li>Meet and work. Coordinator keeps everyone on task and makes sure everyone is involved, recorder prepares final solution to be turned in, monitor makes sure everyone understands the solution, including the coding, the checker double-checks the work for reproducibility (and errors!), and the reviewer is responsible for (1) sharing comments on the graded project (and interim submissions) with the team (2) leading a discussion about them, with a focus on how to improve moving forward, and (3) reviewing Spliddit effort apportionment scores in a constructive conversation with the team.</li>
+<li>Meet and work. Coordinator keeps everyone on task and makes sure everyone is involved, recorder prepares final solution to be turned in, monitor makes sure everyone understands the solution, including the coding, the checker double-checks the work for reproducibility (and errors!), and the reviewer is responsible for (1) sharing comments on the graded project (and interim submissions) with the team (2) leading a discussion about them, with a focus on how to improve moving forward, and (3) reviewing effort apportionment in a constructive conversation with the team.</li>
 <li>Checker turns in assignment, which also indicates which student took on each role in the first bullet point.</li>
-<li>All team members complete evaluations on <a href="http://www.spliddit.org">Spliddit</a>. On Spliddit, you will use sliders to indicate the relative contributions of each of your peers (credit is out of 100%). Your ratings should reflect the percentage of the total project that each individual is responsible for, not taking your own contributions into account. Spliddit will then apportion credit using fair division principles (you can read more about it on the website).</li>
+<li>All team members complete written evaluations of effort put forth by other team members.</li>
 <li>Reviewer coordinates review of returned assignments.</li>
 </ul>
 </div>
 <div id="team-expectations-agreement" class="section level3">
 <h3>Team expectations agreement</h3>
-<p>On a single sheet of paper, list the names of all group members along with a list of expectations the team wishes to adopt. Suggestions are below, but you can add or subtract any items as needed. Each member should sign the sheet and turn it in on class September 5.</p>
+<p>On a single sheet of paper, list the names of all group members along with a list of expectations the team wishes to adopt. Suggestions are below, but you can add or subtract any items as needed. Each member should sign the sheet and turn it in on class September 4.</p>
 <p>Potential expectations include the following (not an exhaustive list!):</p>
 <ul>
 <li>Make a serious effort at assigned work before meetings</li>
@@ -339,7 +438,7 @@ div.tocify {
 <li>Discuss team-related issues frankly and honestly with the group</li>
 <li>Occasionally bring cookies or donuts to meetings</li>
 <li>Never bring smelly food to meetings</li>
-<li>Skype into meetings if you are sick</li>
+<li>Skype into meetings if you are sick rather than communicating a communicable disease</li>
 <li>You get the picture!</li>
 </ul>
 <p><tiny> Group policies adapted from Felder and Brent, 2000 </tiny></p>

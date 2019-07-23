@@ -1,5 +1,5 @@
 ---
-title: Logistic Regression
+title: Interaction in Regression
 output: 
   revealjs::revealjs_presentation:
     theme: night
@@ -23,237 +23,216 @@ library(Hmisc)
 ```
 
 
-## Logistic regression
-
-*Logistic regression* is a type of generalized linear model, which generalizes the typical linear model to non-Gaussian data. The logistic regression model is linear on the log of the odds: $$\log\frac{\pi_i}{1-\pi_i}=\beta_0+\beta_1x_{1i}+\cdots+\beta_px_{pi},$$ where $\pi_i=Pr(y_i=1)$.
-If the parameter $\beta_j>0$, then increasing levels of $x_j$ are associated with higher probabilities that $y=1$, and values of $\beta_j<0$ are associated with lower probabilities that $y=1$. $\beta_j=0$ is consistent with no association between $x_j$ and $y$.
-
-**Question:  where is the $\varepsilon_i$ in this model?**
-
-## Binary outcome: the basics
-
-Suppose we have a binary outcome (e.g., $y=1$ if diseased and $y=0$ if not) and predictors on a variety of scales.
 
 
-If the predictors are discrete and the binary outcomes are independent, we can use the Bernoulli distribution for individual 0-1 data or the binomial distribution for grouped data that are counts of successes in each group.
+## Interaction
+In some cases, the association between a predictor and the outcome may depend on a third variable, indicating an interaction term is needed. Consider a study of a drug designed to treat anxiety. Because of some gender differences in anxiety disorders, researchers have reason to wonder whether a new drug has the same effects in men and women.
 
-## Models for binary outcomes
+## No Interaction
 
-  Contingency tables for continuous predictors (and more than a few categorical predictors) can quickly become unwieldy, so we need a new analytic method to model $\pi=Pr(y=1)$.  
+![](figures/noint.png)
+
+This plot illustrates a case in which the dose effects of the drug are the same in men and women, though it appears men in the study tended to have higher anxiety levels overall ("main effect" of gender - constant 5 unit difference in anxiety levels by gender across all doses).
+
+## No Interaction
+
+![](figures/noint.png)
+
+The model corresponding to this figure would look something like the following:
+
+$$ y_i = \beta_0 + \beta_1 \text{MALE}_i + \beta_2 \text{dose}_i +\varepsilon_i  $$
 
 
-One strategy might be to fit a linear regression model to the probabilities, e.g. model $$\pi_i=\beta_0+\beta_1x_i.$$  The problem is that as a probability, $\pi_i$ must be in the interval $[0,1]$, but there is nothing in the model that enforces this constraint, so that you could be estimating probabilities that are negative or that are greater than 1 -- not a good thing!  
+## No Interaction
 
-## Models for binary outcomes
 
-An alternative that is sometimes used is to fit the model $$\pi_i=\exp(\beta_0+\beta_1x_i),$$  which is equivalent to $$\ln(\pi_i)=\beta_0+\beta_1x_i.$$  While exponentiating the linear predictor ($\beta_0+\beta_1x_i$) does ensure our estimated values of $\pi_i$ are not negative, they can still be greater than 1.  This is not ideal either.
+$$ y_i = \beta_0 + \beta_1 \text{MALE}_i + \beta_2 \text{dose}_i +\varepsilon_i  $$
 
-Note: statisticians often use $\ln$ and $\log$ interchangeably to mean the natural log. If base 10 logarithms are desired, the notation $\log_{10}$ is typically used.
+In this model, $\text{MALE}_i$ takes value 0 for females and 1 for males.  The variable $\text{dose}_i$ takes the appropriate numeric value of the dose in mg (0, 25, 50, or 75).
 
-## Logistic regression
+![](figures/noint.png){width=50%}
 
-An attractive solution is to model the log odds (also called the *logit*) using $$\ln\frac{\pi_i}{1-\pi_i}=\beta_0+\beta_1x_i,$$ which is equivalent to
+Based on the figure, what are the values of $(\beta_0, \beta_1, \beta_2)$?
 
-$$\frac{\pi_i}{1-\pi_i}=\exp(\beta_0+\beta_1x_i),$$ which defines a multiplicative model for the odds.  For example, if we change the $j$th predictor by one unit while holding the other variables constant, we multiply the odds by $\exp(\beta_j)$ because $\exp(\beta_j(x+1))=\exp(\beta_jx)\exp(\beta_j)$.
+## No Interaction
 
-## Logistic regression
+$$ y_i = \beta_0 + \beta_1 \text{MALE}_i + \beta_2 \text{dose}_i +\varepsilon_i  $$
 
-$$\log\frac{\pi_i}{1-\pi_i}=\beta_0+\beta_1x_{i}$$
-In this model, the odds of $y=1$ for participants at covariate level $x_i$ are given by $e^{\beta_0+\beta_1x_i}$, and the odds of $y=1$ for participants at covariate level $x_i+1$ are given by $e^{\beta_0+\beta_1(x_i+1)}$. We often describe the association between $x$ and $y$ in terms of the *odds ratio* (OR) given by $\frac{e^{\beta_0+\beta_1x_i+\beta_1}}{e^{\beta_0+\beta_1x_i}}=e^{\beta_1}$.  
+In this model, the expected anxiety levels at each dose are given below.
 
-Here, $e^{\beta_1}$ is the odds ratio comparing participants who have $x_i$ values one unit higher than counterparts who are otherwise similar.
-
-## Logistic regression model
-
-In this model, 
-
-$$\pi_i=\frac{\exp(\beta_0+\beta_1x_i)}{1+\exp(\beta_0+\beta_1x_i)}.$$  
-
-The expression on the right is called a *logistic function* and cannot yield a value that is negative or a value that is $>1$. A model of this form is known as a *logistic regression* model.
-
-\vspace{.1in}
-
-Other transformations (also called links) can be used to ensure the probabilities lie in $[0,1]$, including the probit (popular in econometrics) and complementary log-log. In practice these links all provide very similar fits to the data except at extreme values of $\pi_i$. 
-
-## Interpreting parameters in logistic regression
-Typically we interpret functions of parameters in logistic regression rather than the parameters themselves.  For the model $$\log\frac{\pi_i}{1-\pi_i}=\beta_0+\beta_1x_i,$$ we note that the probability that $y=1$ when $x=0$ is $\frac{\exp(\beta_0)}{1+\exp(\beta_0)}.$ When $x=1$, $Pr(y=1)=\frac{\exp(\beta_0+\beta_1)}{1+\exp(\beta_0+\beta_1)}.$
+| Gender | Dose | Expected anxiety level|
+|-------|-------|--------|
+| Female | 0 | $\beta_0$ |
+| Female | 25 | $\beta_0 + 25\beta_2$ |
+| Female | 50 | $\beta_0 + 50\beta_2$ |
+| Female | 75 | $\beta_0 + 75\beta_2$ |
+| Male | 0 | $\beta_0+\beta_1$ |
+| Male | 25 | $\beta_0+\beta_1+25\beta_2$ |
+| Male | 50 | $\beta_0+\beta_1+50\beta_2$ |
+| Male | 75 | $\beta_0+\beta_1+75\beta_2$ |
 
 
 
-## Interpreting parameters in logistic regression
-Suppose that $x$ is a binary (0/1) variable, e.g. $x=1$ for Duke and $x=0$ for UNC.  In this case, the coefficient $\beta_1$ has a special interpretation:  we interpret $\exp(\beta_1)$ as the odds ratio of the response for the two possible levels of $x$.  For $x$ on other scales, $\exp(\beta_1)$ is interpreted as the odds ratio of the response comparing two values of $x$ one unit apart.
+## Interaction
+
+![](figures/int.png)
+
+Here we have interaction between gender and dose -- the drug appears to be more effective at reducing anxiety in women. There is also a "main effect" of gender (men have higher anxiety levels even at dose 0).
+
+## Interaction
+
+![](figures/int.png)
+
+When we have an interaction in a model, the "effect" of one variable depends on the level of another. In this case, the dose effect of the drug is different for men and for women. The corresponding model would be similar to that below.
+
+$$ y_i = \beta_0 + \beta_1 \text{MALE}_i + \beta_2 \text{dose}_i + \beta_3\text{MALE}_i\text{dose}_i+\varepsilon_i  $$
 
 
-Why?  The log odds of response for $x=1$ is given by $\beta_0+\beta_1$, and the log odds of response for $x=0$ is $\beta_0$.  So the odds ratio of response comparing $x=1$ to $x=0$ is given by $\frac{\exp(\beta_0+\beta_1)}{\exp(\beta_0)}=\exp(\beta_1)$.
+
+
+## Interaction
+
+$$ y_i = \beta_0 + \beta_1 \text{MALE}_i + \beta_2 \text{dose}_i + \beta_3\text{MALE}_i\text{dose}_i+\varepsilon_i  $$
+
+In this model, the expected anxiety levels at each dose are given below.
+
+| Gender | Dose | Expected anxiety level|
+|-------|-------|--------|
+| Female | 0 | $\beta_0$ |
+| Female | 25 | $\beta_0 + 25\beta_2$ |
+| Female | 50 | $\beta_0 + 50\beta_2$ |
+| Female | 75 | $\beta_0 + 75\beta_2$ |
+| Male | 0 | $\beta_0+\beta_1$ |
+| Male | 25 | $\beta_0+\beta_1+25(\beta_2+\beta_3)$ |
+| Male | 50 | $\beta_0+\beta_1+50(\beta_2+\beta_3)$ |
+| Male | 75 | $\beta_0+\beta_1+75(\beta_2+\beta_3)$ |
 
 
 
-In a \emph{multiple logistic regression} model with more than one predictor, this OR is interpreted conditionally on the values of the other predictors staying fixed at any given values.
+##
 
-## Hypothesis tests in logistic regression
-Generally, we wish to know whether the OR=1 or equivalently whether the log OR (a $\beta$ coefficient)=0.  To test $H_0:\beta_j=0$, we can compare the ratio of a parameter estimate to its standard error using $$z=\frac{\widehat{\beta}_j-0}{\sqrt{\widehat{\text{var}}(\widehat{\beta}_j)}},$$ comparing this z-statistic to the standard normal distribution.  
+Let's see if the gender-birth weight relationship is constant over gestational age.
 
-## Confidence intervals 
+$$ y_i = \beta_0 + \beta_1 \text{GEST}_i + \beta_2 \text{male}_i + \beta_3 \text{GEST}_i\text{male_i}+\epsilon_i  $$
 
-Confidence intervals for the effects on the logit scale, 
-$\widehat{\beta}_j \pm 1.96\sqrt{\widehat{\text{var}}(\widehat{\beta}_j)}$, are typically translated into confidence intervals for OR's by exponentiating the lower and upper confidence limits as $\exp\left(\widehat{\beta}_j \pm 1.96\sqrt{\widehat{\text{var}}(\widehat{\beta}_j)}\right)$.
+* What is the slope for males? Females?
+* How do you determine if gender is related to birth weight?  If gestational age is related to birth weight?
 
+## Interaction code
 
-## Bernoulli versus binomial
+```{r readdata}
+o_data <- read.csv("~/Documents/TEACHING/vitalstats/Yr1117birth.csv", 
+  na.strings=c("9","99", "9999"))
+#SEX=1 male, 2 female
+o_data <- o_data[o_data$SEX!=9,]
+# remove rows with Unspecified gender (9)
+o_data$SEX=factor(o_data$SEX, levels=c(1,2),labels=c("Male","Female")) 
+# define factor
 
-Recall that the sum of $n$ iid Bernoulli(p) random variables is binomial(n,p)
+o_data$GEST_1=o_data$GEST; o_data$BWTG_1=o_data$BWTG
+o_data$GEST_1[o_data$GEST_C>50]=NA
+o_data$GEST_1[o_data$GEST_C<20]=NA
+o_data$BWTG_1[o_data$BWTG_C<500]=NA
+o_data$GEST_1[o_data$GEST_C<25 & o_data$BWTG_1>2000]=NA 
+# now center them at typical values of 39 weeks and 3300g
+o_data$BWTG_C=o_data$BWTG_1-3300
+o_data$GEST_C=o_data$GEST_1-39 
+# unrealistically young and heavy - a sloppy fix and you can do better!
+birth_data <- na.omit(o_data)
+birth_data$SEX <- relevel(birth_data$SEX, ref = "Female") 
+#make females the referent group
 
-The logistic regression model can be used either for Bernoulli data or for data summarized as binomial counts. 
-
-## Contraceptive use data
-
-To illustrate, we consider data on contraceptive use as a function of age, education, and desire for more children from the Fiji Fertility Survey, provided online by German Rodriguez. This survey was given in 1974 to a group of women who were aged 15-49 who had been married at least once.
-
-![<small> Table from Pagano \& Gauvreau </small>](figures/fiji.png){width=40%}
-
-
-## Read data into R
-
-```{r fiji}
-cuse <- read.table("http://data.princeton.edu/wws509/datasets/cuse.dat", header=TRUE)
 ```
 
-## Model
+##
 
-Researchers believe that contraceptive use is related to a woman's age, her desire for more children, and her level of education. They expect an interaction between age and desire for more children due to the relationship between age and fertility.
-
-Thus researchers will fit the model  \begin{eqnarray*}
-\log\frac{\pi_i}{1-\pi_i}&=&\beta_0+\beta_1I(25\leq age_i \leq 29) + \beta_2I(30 \leq age_i \leq 39) \\ & & +\beta_3I(40 \leq age_i \leq 49) + \beta_4 I(morekids_i) \\ & & + \beta_5 I(lowedu_i) + \beta_6 I(25\leq age_i \leq 29)I(morekids_i) \\ & & + \beta_7I(30 \leq age_i \leq 39)I(morekids_i) \\ & & + \beta_8   I(40 \leq age_i \leq 49) I(morekids_i)
-\end{eqnarray*}
-
-## Understanding the model
-
-<small>
-
- \begin{eqnarray*}
-\log\frac{\pi_i}{1-\pi_i}&=&\beta_0+\beta_1I(25\leq age_i \leq 29) + \beta_2I(30 \leq age_i \leq 39) +\beta_3I(40 \leq age_i \leq 49) \\ & & + \beta_4 I(morekids_i)  + \beta_5 I(lowedu_i) + \beta_6 I(25\leq age_i \leq 29)I(morekids_i) \\ & & + \beta_7I(30 \leq age_i \leq 39)I(morekids_i) + \beta_8   I(40 \leq age_i \leq 49) I(morekids_i)
-\end{eqnarray*}
-
-
-|Age           |Wants more kids?   | Education     | Expected log odds |
-| ----------    | -----------------         | --------------- | ---------------- |
-<25 | no | high | $\beta_0$ |
-<25 | no | low | $\beta_0+\beta_5$ |
-<25 | yes | high | $\beta_0+\beta_4$ |
-<25 | yes | low | $\beta_0+\beta_4+\beta_5$ |
-25-29 | no | high | $\beta_0+\beta_1$ |
-25-29  | no | low | $\beta_0+\beta_1+\beta_5$ |
-25-29  | yes | high | $\beta_0+\beta_1+\beta_4+\beta_6$ |
-25-29  | yes | low | $\beta_0+\beta_1+\beta_4+\beta_5+\beta_6$ |
-30-39 | no | high | $\beta_0+\beta_2$ |
-30-39  | no | low | $\beta_0+\beta_2+\beta_5$ |
-30-39  | yes | high | $\beta_0+\beta_2+\beta_4+\beta_7$ |
-30-39  | yes | low | $\beta_0+\beta_2+\beta_4+\beta_5+\beta_7$ |
-40-49 | no | high | $\beta_0+\beta_3$ |
-40-49  | no | low | $\beta_0+\beta_3+\beta_5$ |
-40-49  | yes | high | $\beta_0+\beta_3+\beta_4+\beta_8$ |
-40-49  | yes | low | $\beta_0+\beta_3+\beta_4+\beta_5+\beta_8$ |
-
-</small>
-
-
-## Fitting the model
-
-When using summary counts, we can provide R with the outcome counts in a matrix, with the first column indicating counts of "successes" (these will be treated as $y=1$ occurrences) and the second column indicating counts of "failures" ($y=0$). Note that when we specify binomial data, the default link is the logit link.
-
-```{r fitcont}
-m1=glm( cbind(using,notUsing) ~ age * wantsMore + education , family=binomial, 
-        data=cuse)
-```
-
-If we did not have summary counts but instead had a variable $y$ taking 1 for using and 0 for not using for every individual woman, we would replace `cbind(using,notUsing)` with `y`.
-
-## Output
-```{r fitcontsum}
-summary(m1)
+```{r intmodel}
+model2 = lm(BWTG_1~GEST_1+SEX+GEST_1*SEX, data=birth_data)
+summary(model2)
 ```
 
 
-## Interpreting the model results
-```{r confint}
-exp(cbind(OR = coef(m1), confint.default(m1)))
-```
+## Parameter Interpretation 
 
-For simplicity, we can start by interpreting education, which is not involved in the interaction terms. At a given age and level of desire for more children, women with low levels of education have only 0.71 (95\% CI=(0.56, 0.91)) times the odds of using contraceptives as women with higher levels of education.
+This model is a little complicated to interpret -- the intercept of -4099 represents the expected birth weight of a baby at 0 weeks of gestation (clear example of why we do not extrapolate outside the range of the data!). Usually when we have complex terms like interactions or polynomials in a model, it's easier to illustrate model results graphically.
 
-## Interpreting the age terms
+## Graphical Interpretation
 
-The main effect terms in age describe the association between age and contraceptive use *in the subgroup of women who do not want more children* (interaction term 0), comparing each older age group to women under 25. 
+Let's pull off the appropriate parameter estimates from the interaction model so we can plot the model-estimated lines for male and female infants.
 
-Thus given the same education level, a woman aged 40-49 who does not want more children has 6.97 (95\% CI=(3.50, 13.86)) times the odds of using contraceptives as a woman <25 who also does not want more children. If you look at the other age levels, women aged 30-39 also have significantly higher odds of using contraceptives as women <25 who do not want more kids, though women 25-29 are not significantly different in their odds of contraceptive use as their younger counterparts.
-
-
-
-## Interpreting the age terms
-
-We also may wish to make comparisons to an age group other than the under 25's. For example, to obtain the odds ratio comparing a woman aged 40-49 to a woman aged 30-39, assuming both do not want more children and have the same educational level, we wish to calculate $$OR=\frac{e^{\beta_0+\beta_3+\beta_5I(lowedu_i)}}{e^{\beta_0+\beta_2+\beta_5I(lowedu_i)}}=e^{\beta_3-\beta_2}.$$
-
-Because our estimates of $\beta_3$ and $\beta_2$ are likely not independent, we cannot simply sum their standard errors to get the appropriate standard error for our odds ratio.
-
-## Estimates not part of standard output
-
-One way to do this is to use linear algebra to derive the right standard error from our covariance matrix of parameter estimates (R has various functions that do this, though they are not particularly intuitive). Perhaps an easier way is simply to fit the model again specifying a different referent group. If we change the referent group, we do change the equation used to fit the model (e.g., $\beta_0$ will represent something different), so we just need to be sure we keep things straight in tables.
-
-## Changing the referent group
-
-```{r fitcontrecode, eval=FALSE}
-cuse$age <- relevel(cuse$age, ref = "30-39")
-m2=glm( cbind(using,notUsing) ~ age * wantsMore + education , family=binomial, 
-        data=cuse)
-summary(m2)
-exp(cbind(OR = coef(m2), confint.default(m2)))
-```
-
-What does $\beta_0$ represent in this formulation of the model?
-
-## Changing the referent group
-
-```{r fitcontrecodeb, echo=FALSE}
-cuse$age <- relevel(cuse$age, ref = "30-39")
-m2=glm( cbind(using,notUsing) ~ age * wantsMore + education , family=binomial, 
-        data=cuse)
-summary(m2)
-exp(cbind(OR = coef(m2), confint.default(m2)))
+```{r pickoffestimates}
+female_intercept <- model2$coefficients["(Intercept)"]
+male_intercept <- model2$coefficients["(Intercept)"] +  model2$coefficients["SEXMale"]
+female_slope <- model2$coefficients["GEST_1"]
+male_slope <- model2$coefficients["GEST_1"] +  model2$coefficients["GEST_1:SEXMale"]
+est2 <- data.frame(sl = c(female_slope,male_slope), 
+                 int = c(female_intercept,male_intercept), 
+                 SEX = c('Female','Male'))
+est2
 ```
 
 
-## Changing the referent group
+##
 
-
-So the woman aged 40-49 who wants no more kids has 1.33 (95\% CI=(0.88, 2.00)) times the odds of using contraceptives as her counterpart aged 30-39 who also wants no more kids and has the same level of education.
-
-A woman aged 25-29 who wants no more kids has 0.37 (95\% CI=(0.23, 0.58))  times the odds of using contraceptives as her counterpart aged 30-39 who also wants no more kids and has the same level of education.
-
-## Now add some interaction terms!
-
-To make comparisons among women who do want more children, we need to add the main effect and interaction terms. Again, this will complicate our job of getting confidence intervals because we cannot just add their standard errors.  Alternatively, we can use the same trick we used before, changing the referent group of the desire for children variable.
-
-## Comparisons among women who do want more kids
-```{r fitcontrecode2, eval=FALSE}
-cuse$age <- relevel(cuse$age, ref = "<25") #change back to young referent
-cuse$wantsMore <- relevel(cuse$wantsMore, ref = "yes") #make morekids referent
-m3=glm( cbind(using,notUsing) ~ age * wantsMore + education , family=binomial, 
-        data=cuse)
-summary(m3)
-exp(cbind(OR = coef(m3), confint.default(m3)))
+```{r makeplot, out.width="50%"}
+# Plot some of the observed values and the predictions, sampling from original data 
+# (so ggplot doesn't run super slowly)
+N <- 100000 # how many points from original data set to plot
+birth_data_red <- birth_data[sample(1:nrow(birth_data),N),]
+library(ggplot2)
+# Note the bottom left -- we systematically under-predict for very young babies.
+ggplot(birth_data_red, aes(x=GEST,y=BWTG,color=SEX)) + geom_point(aes(alpha=0.1)) + 
+  geom_abline(data=est2, aes(intercept=int, slope=sl, color=SEX)) +
+  xlab("Gestational age (weeks)") + ylab("Birthweight (g)") + 
+  ggtitle("Observed values with overlaid model predictions")
 ```
 
-## Comparisons among women wanting more
-```{r fitcontrecode2b, echo=FALSE}
-cuse$age <- relevel(cuse$age, ref = "<25") #change back to young referent
-cuse$wantsMore <- relevel(cuse$wantsMore, ref = "yes")
-m3=glm( cbind(using,notUsing) ~ age * wantsMore + education , family=binomial, 
-        data=cuse)
-summary(m3)
-exp(cbind(OR = coef(m3), confint.default(m3)))
+## Centering
+
+You might not like the big negative intercept in the previous model. One way to make the intercept have a realistic interpretation on its own is to use centered variables -- for example we created a version of gestational age pseudo-centered 39 weeks. We'll get the same plot but more interpretable estimates in a model using a centered predictor.
+
+##
+
+```{r centeredmodel}
+model3 = lm(BWTG_1~GEST_C+SEX+GEST_C*SEX, data=birth_data)
+summary(model3)
+
+```
+
+##
+
+
+```{r pickoffestimatescent}
+female_intercept3 <- model3$coefficients["(Intercept)"]
+male_intercept3 <- model3$coefficients["(Intercept)"] +  model3$coefficients["SEXMale"]
+female_slope3 <- model3$coefficients["GEST_C"]
+male_slope3 <- model3$coefficients["GEST_C"] +  model3$coefficients["GEST_C:SEXMale"]
+est3 <- data.frame(sl = c(female_slope3,male_slope3), 
+                 int = c(female_intercept3,male_intercept3), 
+                 SEX = c('Female','Male'))
+est3
+```
+Now you can easily see that at the typical (39 weeks) gestational age, the typical male baby is expected to weigh more than the typical female baby. Notice also the slopes are unaffected by the centering.
+
+##
+The estimates differ, but the plot and model fit are identical!
+
+```{r makeplot3, out.width="50%"}
+# Plot some of the observed values and the predictions, sampling from original data 
+# (so ggplot doesn't run super slowly)
+
+ggplot(birth_data_red, aes(x=GEST_C,y=BWTG,color=SEX)) + geom_point(aes(alpha=0.1)) + 
+  geom_abline(data=est3, aes(intercept=int, slope=sl, color=SEX)) +
+  xlab("Gestational age (weeks)") + ylab("Birthweight (g)") + 
+  ggtitle("Observed values with overlaid model predictions")
+
 ```
 
 
-## Finish describing the results
+## Class Exercise:
 
-Using these derivations as a guide, describe the model results using language suitable for publication in a non-statistical journal.  (Translation: you can use the terminology OR and CI but need to be specific about all the comparisons, not expecting the reader to be able to do them by hand.)
+1. Fit the interaction model switching the referent group from females to males, and verify the slopes and intercepts are the same for females and males.
+
+2. Fit a regression model with birth weight as the outcome and predictors including biological sex, total pregnancies (dichotomized as 1 or >1), smoking status (dichotomized as any versus none), and gestational age (linear term in weeks). Explore whether interaction or polynomial terms improve model fit.
+
+
