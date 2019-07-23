@@ -25,7 +25,7 @@ library(Hmisc)
 
 ## Logistic regression
 
-*Logistic regression* is a type of generalized linear model, which generalizes the typical linear model to non-Gaussian data. The logistic regression model is linear on the log of the odds: $$\log\frac{\pi_i}{1-\pi_i}=\beta_0+\beta_1x_{1i}+\cdots+\beta_px_{pi},$$ where $\pi_i=Pr(y_i=1)$.
+*Logistic regression* is a type of generalized linear model, which generalizes the linear regression model to non-Gaussian data. The logistic regression model is linear on the log of the odds: $$\log\frac{\pi_i}{1-\pi_i}=\beta_0+\beta_1x_{1i}+\cdots+\beta_px_{pi},$$ where $\pi_i=Pr(y_i=1)$.
 If the parameter $\beta_j>0$, then increasing levels of $x_j$ are associated with higher probabilities that $y=1$, and values of $\beta_j<0$ are associated with lower probabilities that $y=1$. $\beta_j=0$ is consistent with no association between $x_j$ and $y$.
 
 **Question:  where is the $\varepsilon_i$ in this model?**
