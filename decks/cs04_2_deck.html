@@ -530,7 +530,7 @@ tabtmp=<span class="kw">count</span>(dep,<span class="kw">c</span>(<span class="
 <ul>
 <li><span class="math inline">\(\mu_{ij}=\eta_{ij}={\bf X}_{ij}\boldsymbol{\beta}\)</span> (a linear regression)</li>
 <li><span class="math inline">\(\text{Var}(Y_{ij})=\sigma^2\)</span> (homogeneous variance)</li>
-<li><span class="math inline">\(\text{Corr}(Y_{ij},Y_{ik})=\rho^{|k-j|}\)</span>, <span class="math inline">\((0 \leq \rho \leq 1)\)</span> (autoregressive correlation)</li>
+<li><span class="math inline">\(\text{Corr}(Y_{ij},Y_{ik})=\rho^{|k-j|}\)</span>, <span class="math inline">\((0 \leq \rho \leq 1)\)</span> (autoregressive correlation – correlation decreases as measurements are further apart in time)</li>
 </ul>
 </section>
 <section id="binary-response-model-one-example" class="slide level2">
@@ -538,7 +538,7 @@ tabtmp=<span class="kw">count</span>(dep,<span class="kw">c</span>(<span class="
 <ul>
 <li><span class="math inline">\(\text{logit}(\mu_{ij})=\eta_{ij}={\bf X}_{ij}\boldsymbol{\beta}\)</span> (logistic regression)</li>
 <li><span class="math inline">\(\text{Var}(Y_{ij})=\mu_{ij}(1-\mu_{ij})\)</span> (based on Bernoulli distribution; standard for logistic regression)</li>
-<li><span class="math inline">\(\text{Corr}(Y_{ij},Y_{ik})=\rho\)</span> (compound symmetric correlation)</li>
+<li><span class="math inline">\(\text{Corr}(Y_{ij},Y_{ik})=\rho\)</span> (compound symmetric correlation – same correlation no matter how far apart measures are in time)</li>
 </ul>
 </section>
 <section id="marginal-models-1" class="slide level2">

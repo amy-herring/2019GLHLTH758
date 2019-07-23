@@ -19,7 +19,7 @@ library(countrycode)
 library(knitr)
 ```
 
-## Case Study 4: Longitudinal Data Analysis
+## Case Study 3: Longitudinal Data Analysis
 
 In this case study we will explore challenges related to the analysis of longitudinal data, including how to handle repeated measures collected on individuals and principled methods of dealing with missing observations.
 

@@ -43,7 +43,7 @@ In SHARE-Child Pakistan, we have missing data on the depression outcome measured
 head(depfinal)
 ```
 
-The variable `anon_id` indicates the observations from each participant.
+The variable `pid` indicates the observations from each participant.
 
 ## Missing data in SHARE-Child
 
@@ -93,7 +93,7 @@ That multinomial logistic regression model does not reveal strong predictors of 
 
 ## Imputation of the missing outcomes
 
-```{r,mice, cache=TRUE}
+```{r,mice}
 depimp <- mice(depwide, m=20, printFlag=FALSE, maxit = 40, seed=2525) 
 # The output depimp contains m=20 completed datasets 
 
@@ -126,7 +126,8 @@ for (i in 1:20) {
   depimp.data[[i]]=complete(depimp,action=i)
 }
 # transpose data and add time variable back
-depimp.data2 <- lapply(depimp.data,reshape,varying=4:6,v.names="dep",idvar="pid",timevar="followup",times=c(0,1,2),direction="long")
+depimp.data2 <- lapply(depimp.data,reshape,varying=4:6,v.names="dep",idvar="pid", 
+                       timevar="followup",times=c(0,1,2),direction="long")
 depimp.data2 <- lapply(depimp.data2,FUN=function(u){ u[order(u$pid),]})
 
 ```

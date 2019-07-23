@@ -68,13 +68,13 @@ Yikes!  What does this mean for some models we know about?
 
 - $\mu_{ij}=\eta_{ij}={\bf X}_{ij}\boldsymbol{\beta}$ (a linear regression)
 - $\text{Var}(Y_{ij})=\sigma^2$ (homogeneous variance)
-- $\text{Corr}(Y_{ij},Y_{ik})=\rho^{|k-j|}$, $(0 \leq \rho \leq 1)$ (autoregressive correlation)
+- $\text{Corr}(Y_{ij},Y_{ik})=\rho^{|k-j|}$, $(0 \leq \rho \leq 1)$ (autoregressive correlation -- correlation decreases as measurements are further apart in time)
 
 ## Binary response model: one example
 
 - $\text{logit}(\mu_{ij})=\eta_{ij}={\bf X}_{ij}\boldsymbol{\beta}$ (logistic regression)
 - $\text{Var}(Y_{ij})=\mu_{ij}(1-\mu_{ij})$ (based on Bernoulli distribution; standard for logistic regression)
-- $\text{Corr}(Y_{ij},Y_{ik})=\rho$ (compound symmetric correlation)
+- $\text{Corr}(Y_{ij},Y_{ik})=\rho$ (compound symmetric correlation -- same correlation no matter how far apart measures are in time)
 
 ## Marginal models
 

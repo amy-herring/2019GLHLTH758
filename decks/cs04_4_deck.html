@@ -521,7 +521,7 @@ depfinal=dep[,<span class="kw">c</span>(<span class="dv">3</span>,<span class="d
 ## 4         0 1 (-0.001,12] (15,30]   2
 ## 5         1 0 (-0.001,12] (15,30]   2
 ## 6         2 1 (-0.001,12] (15,30]   2</code></pre>
-<p>The variable <code>anon_id</code> indicates the observations from each participant.</p>
+<p>The variable <code>pid</code> indicates the observations from each participant.</p>
 </section>
 <section id="missing-data-in-share-child-1" class="slide level2">
 <h2>Missing data in SHARE-Child</h2>
@@ -649,7 +649,8 @@ genl=<span class="kw">multinom</span>(pattern<span class="op">~</span>age<span c
   depimp.data[[i]]=<span class="kw">complete</span>(depimp,<span class="dt">action=</span>i)
 }
 <span class="co"># transpose data and add time variable back</span>
-depimp.data2 &lt;-<span class="st"> </span><span class="kw">lapply</span>(depimp.data,reshape,<span class="dt">varying=</span><span class="dv">4</span><span class="op">:</span><span class="dv">6</span>,<span class="dt">v.names=</span><span class="st">&quot;dep&quot;</span>,<span class="dt">idvar=</span><span class="st">&quot;pid&quot;</span>,<span class="dt">timevar=</span><span class="st">&quot;followup&quot;</span>,<span class="dt">times=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">2</span>),<span class="dt">direction=</span><span class="st">&quot;long&quot;</span>)
+depimp.data2 &lt;-<span class="st"> </span><span class="kw">lapply</span>(depimp.data,reshape,<span class="dt">varying=</span><span class="dv">4</span><span class="op">:</span><span class="dv">6</span>,<span class="dt">v.names=</span><span class="st">&quot;dep&quot;</span>,<span class="dt">idvar=</span><span class="st">&quot;pid&quot;</span>, 
+                       <span class="dt">timevar=</span><span class="st">&quot;followup&quot;</span>,<span class="dt">times=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">2</span>),<span class="dt">direction=</span><span class="st">&quot;long&quot;</span>)
 depimp.data2 &lt;-<span class="st"> </span><span class="kw">lapply</span>(depimp.data2,<span class="dt">FUN=</span><span class="cf">function</span>(u){ u[<span class="kw">order</span>(u<span class="op">$</span>pid),]})</code></pre></div>
 </section>
 <section id="fit-gee-to-each-imputed-dataset" class="slide level2">

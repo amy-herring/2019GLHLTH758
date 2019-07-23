@@ -41,7 +41,7 @@ knitr::opts_chunk$set(echo = TRUE)
   
 ## Missing at random (MAR)
   - Missingness may depend on observed variables, but not on the missing values themselves
-- e.g., hair samples missing more often for older women or for women with very short hair (and we record hair length in study)
+- e.g., hair samples missing more often for older women or for women with very short hair (and we record age and hair length in study)
 - in mathematical notation $f(R|Y,\theta, \psi) = f(R|Y_{obs},\psi)$
   
 ## Missing not at random/nonignorable (MNAR)
@@ -167,7 +167,7 @@ marginplot(nhanes[, c("chl", "bmi")], col = mdc(1:2), cex.numbers = 1.2, pch = 1
 
 ## Multiple imputation
 
-```{r,mice, cache=TRUE}
+```{r, mice}
 imp <- mice(nhanes, m=20, printFlag=FALSE, maxit = 40, seed=2525) 
 # The output imp contains m=20 completed datasets 
 # Imputation by default used predictive mean matching 
@@ -252,7 +252,7 @@ Basic approach:
 ## Increasing number of imputations
 
 Increase the number of imputations to $m=50$ to see whether we get similar results
-```{r,moreimpute, cache=TRUE}
+```{r,moreimpute}
 imp50 <- mice(nhanes, m=50, printFlag=FALSE, maxit = 40, seed=2525)
 fit.mi50 <- with(data=imp50, expr = lm(chl ~ age + bmi))
 combFit <- pool(fit.mi50)
@@ -290,7 +290,7 @@ densityplot(imp)
 ```
 
 ## What if we only know BMI as a binary indicator?
-```{r,binarybmi, cache=TRUE}
+```{r,binarybmi}
 # Create an indicator variable of BMI, coded as 1 if BMI >= 25, 0 if BMI<25, 
 # NA if BMI is missing
 nhanes$overwt <- ifelse(is.na(nhanes$bmi),NA,ifelse(nhanes$bmi<25,0,1))
@@ -326,7 +326,7 @@ Basic approach:
 6. Repeat for all observations and imputation data sets
 
 ## Change the default imputation methods
-```{r,changedefault, cache=TRUE}
+```{r,changedefault}
 # Since hypertension is binary, we want to change the default imputation method
 meth=imp_new$meth
 meth = c("", "logreg", "pmm","logreg")
