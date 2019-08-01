@@ -40,7 +40,7 @@ Using global health data from the World Bank, CIA Factbook, or a complex data so
 
 - [full.RData](decks/data/full.RData)
 
-- Data you might have interest in for visualizatin: [National birth data: publicly available upon request](https://wonder.cdc.gov/wonder/help/natality.html)
+- Data you might have interest in visualizing: [National birth data: publicly available upon request](https://wonder.cdc.gov/wonder/help/natality.html)
 
 <!--- 
 
@@ -65,7 +65,7 @@ This case study draws on materials developed in Chapter 11 of Data Science in R:
 
 - Interim report: outline the general story you wish to tell graphically. Data sources and variables to be used in the data visualizations, along with short descriptions (e.g., captions) for planned visualizations, should also be included. Maximum of 3 pages.
 
-- Final report:  in-class presentation (5 minutes), R/Tableau visualizations, and a two-page document that clearly references data sources, provides a rationale for the data chosen to tell the story, and summarizes the story told in the graphics.
+- Final report:  in-class presentation (10 minutes), R/Tableau visualizations, and a two-page document that clearly references data sources, provides a rationale for the data chosen to tell the story, and summarizes the story told in the graphics.
 
 
 # Slides 

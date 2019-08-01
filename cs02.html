@@ -7,6 +7,7 @@
 <meta charset="utf-8" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
 
 
@@ -231,48 +232,9 @@ $(document).ready(function () {
 }
 </style>
 
-<script>
-$(document).ready(function () {
-  window.buildTabsets("TOC");
-});
-
-$(document).ready(function () {
-  $('.tabset-dropdown > .nav-tabs > li').click(function () {
-    $(this).parent().toggleClass('nav-tabs-open')
-  });
-});
-</script>
-
 <!-- code folding -->
 
 
-
-<script>
-$(document).ready(function ()  {
-
-    // move toc-ignore selectors from section div to header
-    $('div.section.toc-ignore')
-        .removeClass('toc-ignore')
-        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
-
-    // establish options
-    var options = {
-      selectors: "h1,h2,h3",
-      theme: "bootstrap3",
-      context: '.toc-content',
-      hashGenerator: function (text) {
-        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
-      },
-      ignoreSelector: ".toc-ignore",
-      scrollTo: 0
-    };
-    options.showAndHide = false;
-    options.smoothScroll = true;
-
-    // tocify
-    var toc = $("#TOC").tocify(options).data("toc-tocify");
-});
-</script>
 
 <style type="text/css">
 
@@ -434,7 +396,7 @@ div.tocify {
 <h1>Resources</h1>
 <ul>
 <li><a href="http://r-statistics.co/Linear-Regression.html">Linear Regression in R</a></li>
-<li><a href="https://ademos.people.uic.edu/Chapter13.html">Some (mostly good)thoughts on interaction in regression</a></li>
+<li><a href="https://ademos.people.uic.edu/Chapter13.html">Some (mostly good) thoughts on interaction in regression</a></li>
 <li><a href="https://stats.idre.ucla.edu/r/dae/logit-regression/">Logistic Regression in R</a></li>
 <li><a href="https://www.statmethods.net/stats/power.html">Power Analysis in R</a></li>
 <li><a href="https://www.statmethods.net/stats/nonparametric.html">R Code for Some Nonparametric Tests</a> <!---
@@ -456,10 +418,10 @@ div.tocify {
 <h1>Slides</h1>
 <ul>
 <li><p><a href="decks/cs02_1_deck.html">Linear regression</a></p></li>
-<li><p>[add a deck on interaction here]</p></li>
-<li><p><a href="decks/cs02_2_deck.html">Logistic regression</a></p></li>
-<li><p><a href="decks/cs02_3_deck.html">Power analysis</a></p></li>
-<li><p><a href="decks/cs02_4_deck.html">Fisher’s exact test</a></p></li>
+<li><p><a href="decks/cs02_2_deck.html">Interaction in regression</a></p></li>
+<li><p><a href="decks/cs02_3_deck.html">Logistic regression</a></p></li>
+<li><p><a href="decks/cs02_4_deck.html">Power analysis</a></p></li>
+<li><p><a href="decks/cs02_5_deck.html">Fisher’s exact test</a></p></li>
 </ul>
 </div>
 
@@ -481,6 +443,49 @@ $(document).ready(function () {
 });
 
 
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = false;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
 </script>
 
 <!-- dynamically load mathjax for compatibility with self-contained -->

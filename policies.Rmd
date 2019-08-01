@@ -38,7 +38,7 @@ Please review the Academic Dishonesty policies <a href="https://studentaffairs.d
 
 - Several datasets we are privileged to use in class are confidential and cannot be distributed more broadly. Further dissemination of such datasets, made available on Sakai, will be considered a violation of the Duke Community Standard. If you are unsure whether you can use a dataset for purposes beyond class, please ask me.
 
-- Much of the work assigned in class is collaborative. The individual case study must be completed independently. In addition, regular assessments must be completed individually before they are tackled by the group. 
+- Most of the work assigned in class is collaborative. The individual case study must be completed independently. 
 
 **Referencing code:** The web contains an enormous volume of code that you may find useful. You are welcome to make use of any online resources, but you must explicitly cite your sources. Any recycled code that is discovered and is not explicitly cited will be treated as plagiarism. On the individual case study you may not directly share code with another student in this class, and on team assignments you may not share code with another team in this class (you are welcome to discuss the problems together and ask for advice, but you may not send or make use of code from another team). 
 

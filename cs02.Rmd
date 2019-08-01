@@ -62,10 +62,10 @@ The case study grade will be based on both reports and the reproducibility check
 
 - [Linear regression](decks/cs02_1_deck.html)
 
-- [add a deck on interaction here]
+- [Interaction in regression](decks/cs02_2_deck.html)
 
-- [Logistic regression](decks/cs02_2_deck.html) 
+- [Logistic regression](decks/cs02_3_deck.html) 
 
-- [Power analysis](decks/cs02_3_deck.html)
+- [Power analysis](decks/cs02_4_deck.html)
 
-- [Fisher's exact test](decks/cs02_4_deck.html)
+- [Fisher's exact test](decks/cs02_5_deck.html)

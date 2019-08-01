@@ -20,7 +20,7 @@ library(tidyverse)
 # Case Study Goals 
 
 
-Case study 4 will involve analysis of a subset of data from [SHARE Child Pakistan](https://globalhealth.duke.edu/projects/share-child-pakistan), a DGHI study of children born in rural Pakistan, half to perinatally depressed mothers and half to  perinatally non-depressed mothers. Our data are on the mother's depression status (measured by PHQ-9 scores $\geq 10$) during the third trimester of pregnancy, and at 3 and 6 months postnatally. Our goal is to examine patterns in depression over time to see if depression levels are relatively constant, increasing, or decreasing. In addition, we are interested in  whether depression levels, or their changes over time, are related to maternal education and age.
+Case study 3 will involve analysis of a subset of data from [SHARE Child Pakistan](https://globalhealth.duke.edu/projects/share-child-pakistan), a DGHI study of children born in rural Pakistan, half to perinatally depressed mothers and half to  perinatally non-depressed mothers. Our data are on the mother's depression status (measured by PHQ-9 scores $\geq 10$) during the third trimester of pregnancy, and at 3 and 6 months postnatally. Our goal is to examine patterns in depression over time to see if depression levels are relatively constant, increasing, or decreasing. In addition, we are interested in  whether depression levels, or their changes over time, are related to maternal education and age.
 
 
 

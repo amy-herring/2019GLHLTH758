@@ -7,6 +7,7 @@
 <meta charset="utf-8" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
 
 
@@ -231,48 +232,9 @@ $(document).ready(function () {
 }
 </style>
 
-<script>
-$(document).ready(function () {
-  window.buildTabsets("TOC");
-});
-
-$(document).ready(function () {
-  $('.tabset-dropdown > .nav-tabs > li').click(function () {
-    $(this).parent().toggleClass('nav-tabs-open')
-  });
-});
-</script>
-
 <!-- code folding -->
 
 
-
-<script>
-$(document).ready(function ()  {
-
-    // move toc-ignore selectors from section div to header
-    $('div.section.toc-ignore')
-        .removeClass('toc-ignore')
-        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
-
-    // establish options
-    var options = {
-      selectors: "h1,h2,h3",
-      theme: "bootstrap3",
-      context: '.toc-content',
-      hashGenerator: function (text) {
-        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
-      },
-      ignoreSelector: ".toc-ignore",
-      scrollTo: 0
-    };
-    options.showAndHide = true;
-    options.smoothScroll = true;
-
-    // tocify
-    var toc = $("#TOC").tocify(options).data("toc-tocify");
-});
-</script>
 
 <style type="text/css">
 
@@ -477,22 +439,22 @@ div.tocify {
 </tr>
 <tr class="odd">
 <td>September 25</td>
-<td>Group Presentations of CS1</td>
+<td>Group Presentations of CS1; Regression</td>
 <td>CS1 Final Report</td>
 </tr>
 <tr class="even">
 <td>Septmeber 27</td>
-<td>CS2: Hands On: Modeling Birth Weight</td>
-<td></td>
+<td>Individual Project Proposal Presentations</td>
+<td>Individual Project Statistical Analysis Plan</td>
 </tr>
 <tr class="odd">
 <td>October 2</td>
 <td>Individual Project Proposal Presentations</td>
-<td>Individual Project Statistical Analysis Plan</td>
+<td></td>
 </tr>
 <tr class="even">
 <td>October 4</td>
-<td>Individual Project Proposal Presentations</td>
+<td>Group Work on CS 2</td>
 <td>CS2 Interim Report</td>
 </tr>
 <tr class="odd">
@@ -517,7 +479,7 @@ div.tocify {
 </tr>
 <tr class="odd">
 <td>October 23</td>
-<td>CS2: Small sample methods</td>
+<td>CS2: Small Sample Methods</td>
 <td></td>
 </tr>
 <tr class="even">
@@ -532,12 +494,12 @@ div.tocify {
 </tr>
 <tr class="even">
 <td>November 1</td>
-<td>CS3: Longitudinal Data</td>
+<td>CS3: Hands-on Longitudinal Data</td>
 <td></td>
 </tr>
 <tr class="odd">
 <td>November 6</td>
-<td>CS3: Hands-on Longitudinal Data</td>
+<td>CS3: Longitudinal Data</td>
 <td></td>
 </tr>
 <tr class="even">
@@ -588,6 +550,49 @@ $(document).ready(function () {
 });
 
 
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
 </script>
 
 <!-- dynamically load mathjax for compatibility with self-contained -->

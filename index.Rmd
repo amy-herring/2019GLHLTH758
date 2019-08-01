@@ -50,19 +50,19 @@ Note: this schedule is approximate and is likely to be modified as the course pr
 | September 13  | CS1: Lab: Tableau | CS1 Topic and Plan |
 | September 18  | CS2: Regression Modeling | |
 | Septmeber 20  | CS2: Interaction in Regression | |
-| September 25  | Group Presentations of CS1 | CS1 Final Report|
-| Septmeber 27  | CS2: Hands On: Modeling Birth Weight | |
-| October 2     | Individual Project Proposal Presentations | Individual Project Statistical Analysis Plan  | 
-| October 4     | Individual Project Proposal Presentations | CS2 Interim Report |
+| September 25  | Group Presentations of CS1; Regression | CS1 Final Report|
+| Septmeber 27  | Individual Project Proposal Presentations | Individual Project Statistical Analysis Plan |
+| October 2     | Individual Project Proposal Presentations |   | 
+| October 4     | Group Work on CS 2 | CS2 Interim Report |
 | October 9    | CS2: Logistic Regression | |
 | October 11    | CS2: Statistical Power |  |
 | October 16    | CS2: Interaction in Logistic Regression |   |
 | October 18    | CS2: Hands-on Logistic Regression | |
-| October 23    | CS2: Small sample methods |   |
+| October 23    | CS2: Small Sample Methods |   |
 | October 25    | CS2 Presentations  |  CS2 Final Report | 
 | October 30    | CS3: Longitudinal Data |   |
-| November 1    | CS3: Longitudinal Data | |
-| November 6    | CS3: Hands-on Longitudinal Data |  |
+| November 1    | CS3: Hands-on Longitudinal Data | |
+| November 6    | CS3: Longitudinal Data |  |
 | November 8    | CS3 Presentations | CS3 Final Report |
 | November 13   | Individual Case Study Presentations |   |
 | November 15   | Individual Case Study Presentations |  |

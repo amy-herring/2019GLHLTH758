@@ -7,6 +7,7 @@
 <meta charset="utf-8" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
 
 
@@ -231,48 +232,9 @@ $(document).ready(function () {
 }
 </style>
 
-<script>
-$(document).ready(function () {
-  window.buildTabsets("TOC");
-});
-
-$(document).ready(function () {
-  $('.tabset-dropdown > .nav-tabs > li').click(function () {
-    $(this).parent().toggleClass('nav-tabs-open')
-  });
-});
-</script>
-
 <!-- code folding -->
 
 
-
-<script>
-$(document).ready(function ()  {
-
-    // move toc-ignore selectors from section div to header
-    $('div.section.toc-ignore')
-        .removeClass('toc-ignore')
-        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
-
-    // establish options
-    var options = {
-      selectors: "h1,h2,h3",
-      theme: "bootstrap3",
-      context: '.toc-content',
-      hashGenerator: function (text) {
-        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
-      },
-      ignoreSelector: ".toc-ignore",
-      scrollTo: 0
-    };
-    options.showAndHide = false;
-    options.smoothScroll = true;
-
-    // tocify
-    var toc = $("#TOC").tocify(options).data("toc-tocify");
-});
-</script>
 
 <style type="text/css">
 
@@ -436,7 +398,7 @@ div.tocify {
 <li><p><a href="decks/data/codeMapDF.RData">codeMapDF.RData</a></p></li>
 <li><p><a href="decks/data/allCtryData.RData">allCtryData.RData</a></p></li>
 <li><p><a href="decks/data/full.RData">full.RData</a></p></li>
-<li><p>Data you might have interest in for visualizatin: <a href="https://wonder.cdc.gov/wonder/help/natality.html">National birth data: publicly available upon request</a></p></li>
+<li><p>Data you might have interest in visualizing: <a href="https://wonder.cdc.gov/wonder/help/natality.html">National birth data: publicly available upon request</a></p></li>
 </ul>
 <!--- 
 
@@ -456,7 +418,7 @@ How To Obtain Data from Factbook:
 <h1>Reports</h1>
 <ul>
 <li><p>Interim report: outline the general story you wish to tell graphically. Data sources and variables to be used in the data visualizations, along with short descriptions (e.g., captions) for planned visualizations, should also be included. Maximum of 3 pages.</p></li>
-<li><p>Final report: in-class presentation (5 minutes), R/Tableau visualizations, and a two-page document that clearly references data sources, provides a rationale for the data chosen to tell the story, and summarizes the story told in the graphics.</p></li>
+<li><p>Final report: in-class presentation (10 minutes), R/Tableau visualizations, and a two-page document that clearly references data sources, provides a rationale for the data chosen to tell the story, and summarizes the story told in the graphics.</p></li>
 </ul>
 </div>
 <div id="slides" class="section level1">
@@ -487,6 +449,49 @@ $(document).ready(function () {
 });
 
 
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = false;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
 </script>
 
 <!-- dynamically load mathjax for compatibility with self-contained -->
