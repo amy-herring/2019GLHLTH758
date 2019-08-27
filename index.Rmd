@@ -43,8 +43,8 @@ Note: this schedule is approximate and is likely to be modified as the course pr
 |Date           |Topic                      |Deliverables     |
 | ----------    | -----------------         | --------------- |
 | August 28     | Welcome, Groups, and CS1: Healthy Babies      |       |
-| August 30     | CS1: R and Data Visualization    |     RStudio Installed and Video Tutorial under R Basics Tab Completed            |
-| September 4   | CS1: Hands on with R  | 1-page Proposals for Individual Case Studies & Group Expectations Documents Signed |
+| August 30     | CS1: R and Data Visualization    |     RStudio Installed and Video Tutorial under R Basics Tab Completed, Bring Completed Getting to Know You Sheets (on Sakai) to Class            |
+| September 4   | CS1: Hands on with R  | Proposals for Individual Case Studies & Group Expectations Documents Signed |
 | September 6   | CS1: Data Wrangling and Visualization | |
 | September 11  | CS1: Tableau for Data Visualization | |
 | September 13  | CS1: Lab: Tableau | CS1 Topic and Plan |
