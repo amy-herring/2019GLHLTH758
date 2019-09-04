@@ -280,7 +280,7 @@ ggplot(data = birth_data, mapping = aes(x = MRACER, fill = MHISP)) +
 ```{r durham, eval=FALSE,cache=TRUE}
 birth2017=subset(birth_data,birth_data$YOB=='2017')
 #CORES code for Durham Co is 32
-durhamb16=subset(birth2017,birth2016$CORES=='32')
+durhamb17=subset(birth2017,birth2017$CORES=='32')
 ```
 
 - Create a scatterplot of the Durham data with birth weight on the y-axis and gestational age on the x-axis. Adapt the plot by exploring [options in the geom_point() call](https://ggplot2.tidyverse.org/reference/geom_point.html).  For example, you can try the following.
