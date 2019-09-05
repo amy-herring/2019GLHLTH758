@@ -39,9 +39,14 @@ birth2017=subset(birth_data,birth_data$YOB=='2017')
 durhamb17=subset(birth2017,birth2017$CORES=='32')
 
 #make a plot
+library(ggplot2)
 ggplot(data = durhamb17, mapping = aes(x = GEST_C, y = BWTG_C)) +
   geom_point(alpha=1/10,color="blue") + xlab("Gestational age (weeks)") + ylab("Birth weight (g)") + 
   ggtitle("Durham Co, NC Births, 2011-2017")
+
+#histogram
+ggplot(data = birth_data, mapping = aes(x = BWTG)) +
+  geom_histogram(binwidth = 200) + xlab("Birth weight (g)") 
 
 # read in some Stata data (use the foreign library and read.dta for earlier versions of Stata)
 # these data are from a study that did not draw a random population sample
@@ -50,6 +55,9 @@ library(haven)
 lbw=read_dta("http://www.stata-press.com/data/r13/gsem_lbw.dta")
 
 glimpse(lbw)
+
+ggplot(data = lbw, mapping = aes(x = bwt)) +
+  geom_histogram(binwidth = 200) + xlab("Birth weight (g)") 
 
 # look at the distribution of birth weight in these data using
 # graphical techniques we have discussed so far
