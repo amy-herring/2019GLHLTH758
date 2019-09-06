@@ -231,7 +231,7 @@ allCtryData$rads = pmax(sqrt(allCtryData$pop)/4000, 1)
 # Fix Discs
 world = map(database = "world", fill = TRUE, col="light grey")
 symbols(allCtryData$longitude, allCtryData$latitude, add = TRUE,
-        circles= rads, inches = FALSE,
+        circles= allCtryData$rads, inches = FALSE,
         fg = cols[InfMortDiscrete], bg = cols[InfMortDiscrete])
 legend(x = -150, y = 0, title = "Infant Mortality",
        legend = levels(InfMortDiscrete), fill = cols, cex = 0.8)
