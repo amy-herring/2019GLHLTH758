@@ -47,13 +47,13 @@ Note: this schedule is approximate and is likely to be modified as the course pr
 | September 4   | CS1: Hands on with R  | Proposals for Individual Case Studies & Group Expectations Documents Signed |
 | September 6   | CS1: Data Wrangling and Visualization | |
 | September 11  | CS1: Tableau for Data Visualization | |
-| September 13  | CS1: More with Tableau | CS1 Topic and Plan |
+| September 13  | CS1: More with Tableau | CS1 Topic and Plan (ok to turn in Monday) |
 | September 18  | CS2: Regression Modeling | |
 | Septmeber 20  | CS2: Interaction in Regression | |
 | September 25  | Group Presentations of CS1: Regression | CS1 Final Report|
 | September 27  | Individual Project Proposal Presentations | Individual Project Statistical Analysis Plan |
 | October 2     | Individual Project Proposal Presentations |   | 
-| October 4     | Group Work on CS 2 | CS2 Interim Report |
+| October 4     | Group Work on CS 2 | CS2 Interim Report (due by end of day) |
 | October 9    | CS2: Logistic Regression | |
 | October 11    | CS2: Statistical Power |  |
 | October 16    | CS2: Interaction in Logistic Regression |   |

@@ -17,10 +17,6 @@ Again we will begin by opening Tableau and selecting the "Statistical file" opti
 
 ![](dashboard_figures/import_data.png){width=400px}
 
-### Importing The Data
-Again we will begin by opening R and selecting the "Statistical file" option for importing the data. However, this time select the data set labeled "full.RData" (this is available for download on the course website). Now we are ready to move onto creating our sheets and then our dashboard.
-
-![](dashboard_figures/import_data.png){width=400px}
 
 ### The Sheets
 Before we create our dashboard, we must first create the figures that will go on it. Each figure will have its own sheet, and we can customize these sheets as much as needed.
@@ -65,7 +61,7 @@ If you wish to change the names of variables, you will need to do so in the Data
 ***
 
 #### Sheet 3 & 4: Bar Charts
-For our final two figures, we will be creating bar plots. To do this we will select the variables of interest and drag them into the center of the sheet (or into the "Measure Values" section). Then we will change the chart into a bar chart by clicking the "Show Me" button in the upper right corner, and selecting the appropriate plot. (Note: we could create many other types of plots in a similar manner)
+For our final two figures, we will be creating bar plots. To do this we will select the variables of interest and drag them into the center of the sheet. Then we will change the chart into a bar chart by clicking the "Show Me" button in the upper right corner, and selecting the appropriate plot. (Note: we could create many other types of plots in a similar manner)
 
 ![](dashboard_figures/change_chart.png){width=150px}
 ![](dashboard_figures/pop_str.png){width=500px}
