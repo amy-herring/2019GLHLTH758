@@ -66,7 +66,7 @@ We will evaluate whether there is a relationship between the response, birth wei
 * For now, remove the rows with missing values
 * Focus on most recent year with data, 2016
 * Do some rudimentary data cleaning
-```{r readdata}
+```{r readdata, cache=TRUE}
 #Read in birth data
 o_data <- read.csv("~/Documents/TEACHING/vitalstats/Yr1117birth.csv", 
   na.strings=c("9","99", "9999"))
@@ -81,12 +81,12 @@ birth_data_2017=birth_data[which(birth_data$YOB==2017),]
 ```
 
 ## Is birth weight normally distributed?
-* Compare histogram of birth weight to a normal distribution parameterized with a mean and variance that is set based on birth weight variable, `BWTG`.
+* Compare histogram of birth weight to a normal distribution parameterized with a mean and variance that is set based on birth weight variable, `BWTG_C`.
 * Do the distributions align?
   
-```{r histogram, out.width = '50%', echo=FALSE }
+```{r histogram, out.width = '50%', echo=FALSE, cache=TRUE }
 par(mfrow=c(1,2))
-hist(birth_data$BWTG, xlab="Birth weight (g)", main="Birth weight Histogram", prob=TRUE, breaks=50)
+hist(birth_data$BWTG_C, xlab="Birth weight (g)", main="Birth weight Histogram", prob=TRUE, breaks=50)
 curve(dnorm(x, mean=mean(birth_data$BWTG), sd=sd(birth_data$BWTG)),
       col="darkblue", lwd=2, add=TRUE, yaxt="n")
 hist(birth_data$BWTG, xlab="Birth weight (g)", main="Birth weight Histogram", prob=TRUE, xlim=c(0, 4000), breaks=30)
@@ -95,19 +95,19 @@ curve(dnorm(x, mean=mean(birth_data$BWTG), sd=sd(birth_data$BWTG)),
 ```
 
 ## Linear regression
-Let $y_i$ denote the observed response, 'BWTG', for observation $i$, and $x_i$ the observed covariates, 'GEST' and 'male'. Then we aim to fit the model:
+Let $y_i$ denote the observed response, 'BWTG_C', for observation $i$, and $x_i$ the observed covariates, 'GEST_C' and 'male'. Then we aim to fit the model:
 
-$$ y_i = \beta_0 + \beta_1 \text{GEST}_i + \beta_2 \text{male}_i + \epsilon_i $$
+$$ y_i = \beta_0 + \beta_1 \text{GEST_C}_i + \beta_2 \text{male}_i + \epsilon_i $$
 
 When we fit the line, we estimate the coefficients $\mathbf{\widehat{\beta}}= \{\widehat{\beta}_0, \widehat{\beta}_1, \widehat{\beta}_2\}$, where $\widehat{\beta} = (X^\prime X)^{-1} X^\prime Y$.
 
-$$ \widehat{y}_i = \widehat{\beta}_0 + \widehat{\beta}_1 \text{GEST}_i + \widehat{\beta}_2 \text{male}_i  $$
+$$ \widehat{y}_i = \widehat{\beta}_0 + \widehat{\beta}_1 \text{GEST_C}_i + \widehat{\beta}_2 \text{male}_i  $$
 We denote residuals, $e_i = y_i - \widehat{y}_i$ where $\widehat{y}_i$ is the estimated predicted value for observation $i$.
 
 ## Model Assumptions
 To make inference on the model parameters, $\beta$, we check four assumptions for the linear regression model:
 
-1. The mean of the response, $E(y_i) = \beta_0 + \beta_1 \text{GEST}_i + \beta_2 \text{male}_i$ is **linear function** of the $x_i$ at each value of the predictors $x_i$.
+1. The mean of the response, $E(y_i) = \beta_0 + \beta_1 \text{GEST_C}_i + \beta_2 \text{male}_i$ is **linear function** of the $x_i$ at each value of the predictors $x_i$.
 2. The errors, $\epsilon_i$, are **independent**.
 3. The errors, $\epsilon_i$, at each value of the predictor, $x_i$, are **normally distributed**.
 4. The errors, $\epsilon_i$, at each value of the predictor, $x_i$, have **equal variances**.
@@ -118,8 +118,8 @@ $$\epsilon_i \overset{\text{iid}}{\sim} \text{Normal}(0, \sigma^2).$$
 
 ## Fit regression to data
 Let's fit a linear model using the function `lm`. 
-```{r firstmodel}
-model1 = lm(BWTG~GEST+male, data=birth_data)
+```{r firstmodel, cache=TRUE}
+model1 = lm(BWTG_C~GEST_C+male, data=birth_data_2017)
 summary(model1)
 ```
 
@@ -146,8 +146,8 @@ plot(model1)
 
 ## <small> It is also a good idea to examine the predictions from the model against the true observed values </small>
 
-```{r predplot, out.width='50%'}
-ggplot(data = birth_data, mapping = aes(x = model1$fitted.values, y = BWTG)) +
+```{r predplot, out.width='50%', cache=TRUE}
+ggplot(data = birth_data_2017, mapping = aes(x = model1$fitted.values, y = BWTG_C)) +
   geom_point(alpha=1/20) + geom_abline(intercept=0,slope=1,col='red') + 
   xlab("Predicted birth weight (g)") + ylab("Observed birth weight (g)") 
 
@@ -161,7 +161,7 @@ Diagnostic plots of the model are essential for checking model fit. Some common 
 
   * Model improvements - predictions can often be improved by refining the mean model, e.g. by including polynomial terms or interactions
   * Deletion of outliers - often done in practice, but throwing away data is generally a bad idea. Careful data cleaning is often helpful (and some algorithms are availble for vital records data).
-  * Transformations (e.g. sqrt(BTWG)) - transforming outcome may fix skewness but can make interpretting the model more difficult
+  * Transformations (e.g. sqrt(BTWG_C)) - transforming outcome may fix skewness but can make interpretting the model more difficult
   * Robust regression - use a more flexible regression model to accommodate the data. While there are many methods for robust regression, they share a general strategy of giving lower weight to observations that have large influence on the regression model fit.
 
 

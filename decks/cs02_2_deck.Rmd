@@ -124,19 +124,15 @@ $$ y_i = \beta_0 + \beta_1 \text{GEST}_i + \beta_2 \text{male}_i + \beta_3 \text
 o_data <- read.csv("~/Documents/TEACHING/vitalstats/Yr1117birth.csv", 
   na.strings=c("9","99", "9999"))
 #SEX=1 male, 2 female
-o_data <- o_data[o_data$SEX!=9,]
-# remove rows with Unspecified gender (9)
 o_data$SEX=factor(o_data$SEX, levels=c(1,2),labels=c("Male","Female")) 
-# define factor
 
-o_data$GEST_1=o_data$GEST; o_data$BWTG_1=o_data$BWTG
-o_data$GEST_1[o_data$GEST_C>50]=NA
-o_data$GEST_1[o_data$GEST_C<20]=NA
-o_data$BWTG_1[o_data$BWTG_C<500]=NA
-o_data$GEST_1[o_data$GEST_C<25 & o_data$BWTG_1>2000]=NA 
-# now center them at typical values of 39 weeks and 3300g
-o_data$BWTG_C=o_data$BWTG_1-3300
-o_data$GEST_C=o_data$GEST_1-39 
+o_data$GEST_C=o_data$GEST; o_data$BWTG_C=o_data$BWTG
+o_data$GEST_C[o_data$GEST_C>50]=NA
+o_data$GEST_C[o_data$GEST_C<20]=NA
+o_data$BWTG_C[o_data$BWTG_C<500]=NA
+o_data$GEST_C[o_data$GEST_C<25 & o_data$BWTG_C>2000]=NA 
+# now center gestational age at typical value of 39 weeks 
+o_data$GEST_CENT=o_data$GEST_C-39 
 # unrealistically young and heavy - a sloppy fix and you can do better!
 birth_data <- na.omit(o_data)
 birth_data$SEX <- relevel(birth_data$SEX, ref = "Female") 
@@ -147,14 +143,18 @@ birth_data$SEX <- relevel(birth_data$SEX, ref = "Female")
 ##
 
 ```{r intmodel}
-model2 = lm(BWTG_1~GEST_1+SEX+GEST_1*SEX, data=birth_data)
+model2 = lm(BWTG_C~GEST_C+SEX+GEST_C*SEX, data=birth_data)
 summary(model2)
 ```
 
 
 ## Parameter Interpretation 
 
-This model is a little complicated to interpret -- the intercept of -4099 represents the expected birth weight of a baby at 0 weeks of gestation (clear example of why we do not extrapolate outside the range of the data!). Usually when we have complex terms like interactions or polynomials in a model, it's easier to illustrate model results graphically.
+This model is a little complicated to interpret -- the intercept of -4099 represents the expected birth weight of a baby at 0 weeks of gestation (clear example of why we do not extrapolate outside the range of the data!). The main effect of gender tells us that male babies weigh less than females at 0 weeks of gestation (equally not useful, and also a good example of why we cannot extrapolate beyond the range of the data!).
+
+<br>
+
+Usually when we have complex terms like interactions or polynomials in a model, it's easier to illustrate model results graphically.
 
 ## Graphical Interpretation
 
@@ -163,8 +163,8 @@ Let's pull off the appropriate parameter estimates from the interaction model so
 ```{r pickoffestimates}
 female_intercept <- model2$coefficients["(Intercept)"]
 male_intercept <- model2$coefficients["(Intercept)"] +  model2$coefficients["SEXMale"]
-female_slope <- model2$coefficients["GEST_1"]
-male_slope <- model2$coefficients["GEST_1"] +  model2$coefficients["GEST_1:SEXMale"]
+female_slope <- model2$coefficients["GEST_C"]
+male_slope <- model2$coefficients["GEST_C"] +  model2$coefficients["GEST_C:SEXMale"]
 est2 <- data.frame(sl = c(female_slope,male_slope), 
                  int = c(female_intercept,male_intercept), 
                  SEX = c('Female','Male'))
@@ -181,7 +181,7 @@ N <- 100000 # how many points from original data set to plot
 birth_data_red <- birth_data[sample(1:nrow(birth_data),N),]
 library(ggplot2)
 # Note the bottom left -- we systematically under-predict for very young babies.
-ggplot(birth_data_red, aes(x=GEST,y=BWTG,color=SEX)) + geom_point(aes(alpha=0.1)) + 
+ggplot(birth_data_red, aes(x=GEST_C,y=BWTG_C,color=SEX)) + geom_point(alpha=0.1) + 
   geom_abline(data=est2, aes(intercept=int, slope=sl, color=SEX)) +
   xlab("Gestational age (weeks)") + ylab("Birthweight (g)") + 
   ggtitle("Observed values with overlaid model predictions")
@@ -194,10 +194,12 @@ You might not like the big negative intercept in the previous model. One way to 
 ##
 
 ```{r centeredmodel}
-model3 = lm(BWTG_1~GEST_C+SEX+GEST_C*SEX, data=birth_data)
+model3 = lm(BWTG_C~GEST_CENT+SEX+GEST_CENT*SEX, data=birth_data)
 summary(model3)
 
 ```
+
+This output is much easier to understand! The intercept now represents the expected birth weight at 39 weeks of a female infant.
 
 ##
 
@@ -205,8 +207,8 @@ summary(model3)
 ```{r pickoffestimatescent}
 female_intercept3 <- model3$coefficients["(Intercept)"]
 male_intercept3 <- model3$coefficients["(Intercept)"] +  model3$coefficients["SEXMale"]
-female_slope3 <- model3$coefficients["GEST_C"]
-male_slope3 <- model3$coefficients["GEST_C"] +  model3$coefficients["GEST_C:SEXMale"]
+female_slope3 <- model3$coefficients["GEST_CENT"]
+male_slope3 <- model3$coefficients["GEST_CENT"] +  model3$coefficients["GEST_CENT:SEXMale"]
 est3 <- data.frame(sl = c(female_slope3,male_slope3), 
                  int = c(female_intercept3,male_intercept3), 
                  SEX = c('Female','Male'))
@@ -217,12 +219,14 @@ Now you can easily see that at the typical (39 weeks) gestational age, the typic
 ##
 The estimates differ, but the plot and model fit are identical!
 
-```{r makeplot3, out.width="50%"}
-# Plot some of the observed values and the predictions, sampling from original data 
-# (so ggplot doesn't run super slowly)
-
-ggplot(birth_data_red, aes(x=GEST_C,y=BWTG,color=SEX)) + geom_point(aes(alpha=0.1)) + 
+```{r makeplot3, out.width="45%"}
+# Sample from from original data (so ggplot doesn't run super slowly)
+# note plot a bit trickier to create as need to translate axis scales to
+# get labels on the original scale
+ggplot(birth_data_red, aes(x=GEST_CENT,y=BWTG_C,color=SEX)) + geom_point(alpha=0.1) + 
   geom_abline(data=est3, aes(intercept=int, slope=sl, color=SEX)) +
+  labs(x=NULL)+
+  scale_x_continuous(breaks=c(-14,-9,-4,1),labels=c("25","30","35","40"))+
   xlab("Gestational age (weeks)") + ylab("Birthweight (g)") + 
   ggtitle("Observed values with overlaid model predictions")
 
