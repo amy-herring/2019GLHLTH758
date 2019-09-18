@@ -170,4 +170,14 @@ Diagnostic plots of the model are essential for checking model fit. Some common 
 
 Fit a regression model with birth weight as the outcome and predictors including biological sex, total pregnancies (dichotomized as 1 or >1), smoking status (dichotomized as any versus none), and gestational age (linear term in weeks). Explore whether any polynomial terms improve model fit.
 
+## Helpful sample code?
 
+
+
+
+```{r secondmodel, cache=TRUE, out.width="50%"}
+model2 = lm(BWTG_C~poly(GEST_C,2)+male, data=birth_data_2017)
+ggplot(data = birth_data_2017, mapping = aes(x = model2$fitted.values, y = BWTG_C)) +
+  geom_point(alpha=1/20) + geom_smooth() + 
+  xlab("Predicted birth weight (g)") + ylab("Observed birth weight (g)") 
+```
