@@ -54,8 +54,8 @@ Note: this schedule is approximate and is likely to be modified as the course pr
 | September 27  | Individual Project Proposal Presentations | Individual Project Statistical Analysis Plan |
 | October 2     | Individual Project Proposal Presentations |   | 
 | October 4     | Group Work on CS 2 | CS2 Interim Report (due by end of day) |
-| October 9    | CS2: Logistic Regression | |
-| October 11    | CS2: Statistical Power |  |
+| October 9    | Individual Project Proposal Presentations and CS2: Logistic Regression | |
+| October 11    | CS2: Logistic Regression, Statistical Power |  |
 | October 16    | CS2: Interaction in Logistic Regression |   |
 | October 18    | CS2: Hands-on Logistic Regression | |
 | October 23    | CS2: Small Sample Methods |   |
