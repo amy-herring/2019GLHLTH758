@@ -48,7 +48,7 @@ $$ y_i = \beta_0 + \beta_1 \text{MALE}_i + \beta_2 \text{dose}_i +\varepsilon_i 
 
 $$ y_i = \beta_0 + \beta_1 \text{MALE}_i + \beta_2 \text{dose}_i +\varepsilon_i  $$
 
-In this model, $\text{MALE}_i$ takes value 0 for females and 1 for males.  The variable $\text{dose}_i$ takes the appropriate numeric value of the dose in mg (0, 25, 50, or 75).
+In this model, $\text{MALE}_i$ takes value 0 for females and 1 for males.  The variable $\text{dose}_i$ takes the  numeric value of the dose in mg (0, 25, 50, or 75).
 
 ![](figures/noint.png){width=50%}
 
