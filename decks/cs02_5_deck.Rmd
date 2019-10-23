@@ -21,7 +21,7 @@ knitr::opts_chunk$set(echo = TRUE,fig.width=6, fig.height=5)
 
 ## Motivating example: *Streptococcus pneumoniae* 
 
-Infections due to \emph{Streptococcus pneumoniae} remain a substantial source of morbidity and mortality in both developing and developed countries, despite a century of research and the development of therapeutic interventions such as multiple classes of antibiotics and vaccination. The World Health Organization estimates that in developing countries 814,000 children under the age of five die annually from invasive pneumococcal disease (IPD), with an estimated 1.6 million deaths affecting all ages globally.
+Infections due to \emph{Streptococcus pneumoniae} remain a source of morbidity and mortality in both developing and developed countries, despite a century of research and the development of therapeutic interventions such as multiple classes of antibiotics and vaccination. The World Health Organization estimates that in developing countries 814,000 children under the age of five die annually from invasive pneumococcal disease (IPD), with an estimated 1.6 million deaths affecting all ages globally.
 
 
 Several recent studies have identified associations between pneumococcal serotypes (species variations) and patient outcomes from IPD.  We consider data from a Scottish study of pneumococcal serotypes and mortality.
