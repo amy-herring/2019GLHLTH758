@@ -877,6 +877,62 @@ m3=<span class="kw">glm</span>( <span class="kw">cbind</span>(using,notUsing) <s
 <h2>Finish describing the results</h2>
 <p>Using these derivations as a guide, describe the model results using language suitable for publication in a non-statistical journal. (Translation: you can use the terminology OR and CI but need to be specific about all the comparisons, not expecting the reader to be able to do them by hand.)</p>
 </section>
+<section id="checking-interaction-wanting-more-kids-with-education" class="slide level2">
+<h2>Checking interaction wanting more kids with education</h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">m4=<span class="kw">glm</span>(<span class="kw">cbind</span>(using,notUsing)<span class="op">~</span>age<span class="op">*</span>wantsMore<span class="op">+</span>education<span class="op">*</span>wantsMore,<span class="dt">family=</span>binomial,<span class="dt">data=</span>cuse)
+<span class="kw">summary</span>(m4)</code></pre></div>
+<pre><code>## 
+## Call:
+## glm(formula = cbind(using, notUsing) ~ age * wantsMore + education * 
+##     wantsMore, family = binomial, data = cuse)
+## 
+## Deviance Residuals: 
+##      Min        1Q    Median        3Q       Max  
+## -1.15933  -0.54626   0.02881   0.69881   1.58502  
+## 
+## Coefficients:
+##                          Estimate Std. Error z value Pr(&gt;|z|)    
+## (Intercept)              -1.43792    0.14737  -9.757  &lt; 2e-16 ***
+## age30-39                  0.59368    0.20183   2.941  0.00327 ** 
+## age25-29                  0.40747    0.20200   2.017  0.04367 *  
+## age40-49                  0.67111    0.35520   1.889  0.05884 .  
+## wantsMoreno               0.01394    0.33287   0.042  0.96659    
+## educationlow             -0.51238    0.18143  -2.824  0.00474 ** 
+## age30-39:wantsMoreno      1.00598    0.38197   2.634  0.00845 ** 
+## age25-29:wantsMoreno      0.23699    0.40991   0.578  0.56316    
+## age40-49:wantsMoreno      1.18111    0.50267   2.350  0.01879 *  
+## wantsMoreno:educationlow  0.33935    0.25317   1.340  0.18012    
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## (Dispersion parameter for binomial family taken to be 1)
+## 
+##     Null deviance: 165.772  on 15  degrees of freedom
+## Residual deviance:  10.824  on  6  degrees of freedom
+## AIC: 102.33
+## 
+## Number of Fisher Scoring iterations: 4</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">m4</code></pre></div>
+<pre><code>## 
+## Call:  glm(formula = cbind(using, notUsing) ~ age * wantsMore + education * 
+##     wantsMore, family = binomial, data = cuse)
+## 
+## Coefficients:
+##              (Intercept)                  age30-39  
+##                 -1.43792                   0.59368  
+##                 age25-29                  age40-49  
+##                  0.40747                   0.67111  
+##              wantsMoreno              educationlow  
+##                  0.01394                  -0.51238  
+##     age30-39:wantsMoreno      age25-29:wantsMoreno  
+##                  1.00598                   0.23699  
+##     age40-49:wantsMoreno  wantsMoreno:educationlow  
+##                  1.18111                   0.33935  
+## 
+## Degrees of Freedom: 15 Total (i.e. Null);  6 Residual
+## Null Deviance:       165.8 
+## Residual Deviance: 10.82     AIC: 102.3</code></pre>
+</section>
     </div>
   </div>
 

@@ -59,8 +59,8 @@ Note: this schedule is approximate and is likely to be modified as the course pr
 | October 16    | CS2: Hands-on Logistic Regression |   |
 | October 18    | CS2: Power Analysis | |
 | October 23    | CS2: Small Sample Methods |   |
-| October 25    | CS2 Presentations  |  CS2 Final Report | 
-| October 30    | CS3: Longitudinal Data |   |
+| October 25    | CS3: Longitudinal Data | | 
+| October 30    | CS2 Presentations  |  CS2 Final Report | 
 | November 1    | CS3: Hands-on Longitudinal Data | |
 | November 6    | CS3: Longitudinal Data |  |
 | November 8    | CS3 Presentations | CS3 Final Report |
