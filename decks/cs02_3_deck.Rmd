@@ -257,3 +257,11 @@ exp(cbind(OR = coef(m3), confint.default(m3)))
 ## Finish describing the results
 
 Using these derivations as a guide, describe the model results using language suitable for publication in a non-statistical journal.  (Translation: you can use the terminology OR and CI but need to be specific about all the comparisons, not expecting the reader to be able to do them by hand.)
+
+## Checking interaction wanting more kids with education
+
+```{r checkint}
+m4=glm(cbind(using,notUsing)~age*wantsMore+education*wantsMore,family=binomial,data=cuse)
+summary(m4)
+m4
+```
