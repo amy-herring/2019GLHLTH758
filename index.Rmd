@@ -62,7 +62,7 @@ Note: this schedule is approximate and is likely to be modified as the course pr
 | October 25    | CS3: Longitudinal Data | | 
 | October 30    | CS2 Presentations  |  CS2 Final Report | 
 | November 1    | CS3: Hands-on Longitudinal Data | |
-| November 6    | CS3: Longitudinal Data |  |
+| November 6    | CS3: Missing Data |  |
 | November 8    | CS3 Presentations | CS3 Final Report |
 | November 13   | Individual Case Study Presentations |   |
 | November 15   | Individual Case Study Presentations |  |
