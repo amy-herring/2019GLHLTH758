@@ -220,7 +220,8 @@ One possibility we have not checked is that education has a different impact on 
 ## Education interaction
 
 ```{r eduint}
-m3=geeglm(depressedbin~as.factor(timepoint)*educat,id=as.factor(anon_id),
+m3=geeglm(depressedbin~as.factor(timepoint)+educat+as.factor(timepoint)*educat,
+          id=as.factor(anon_id),
           family=binomial(),corstr="exchangeable",data=newdep,waves=timepoint)
 summary(m3)
 
