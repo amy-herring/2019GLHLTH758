@@ -35,7 +35,7 @@ You will supply your own data for this project.
 - A proposal is due September 4 at the beginning of class along with Sections 1, 2, and 3 of the Statistical Analysis Plan template on the Sakai website (these sections just describe the data and study hypotheses) and if desired, an additional page describing your research.  You must clearly describe the data source(s), the date by which you will have complete access to the required data, and relevant data use restrictions/permissions (including evidence of IRB approval if required).
 - A statistical analysis plan is due at the beginning of class September 27. This report must clearly delineate planned analyses and graphical displays and should be provided using the Statistical Analysis Plan template on the Sakai website (thus completing Sections 4-6 in addition to previously completed Sections 1-3). Each student will present the planned analyses to the class either September 27 or October 2. 
 - Presentations of individual case studies will occur in class November 13, 15, 20, and 22
-- A 5 page (maximum) written report, along with accompanying graphics (maximum 1 Tableau dashboard and/or 3 page appendix of figures), is due at the beginning of class November 22
+- A 5 page (maximum) written report, along with accompanying graphics (maximum 1 Tableau dashboard and/or 3 page appendix of figures), is due at noon on November 25
 
 
 
