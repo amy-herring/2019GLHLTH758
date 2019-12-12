@@ -168,6 +168,7 @@ marginplot(nhanes[, c("chl", "bmi")], col = mdc(1:2), cex.numbers = 1.2, pch = 1
 ## Multiple imputation
 
 ```{r, mice}
+#amy change name of imp
 imp <- mice(nhanes, m=20, printFlag=FALSE, maxit = 40, seed=2525) 
 # The output imp contains m=20 completed datasets 
 # Imputation by default used predictive mean matching 
@@ -357,3 +358,15 @@ pred[, "hyp"] = 0
 pred
 ```
 
+
+
+imp <- mice(nhanes, m=20, printFlag=FALSE, maxit = 40, seed=2525) 
+est1= nhanes %>%
+  mice(seed=2525,print=FALSE) %>%
+  mice::complete("long")
+  
+est1$bmicat=cut(est1$bmi,c(0,25,30,100))
+
+est2=est1 %>%
+  by(as.factor(est1$.imp),lm,formula=chl ~ age + bmicat + hyp) %>%
+  pool()
